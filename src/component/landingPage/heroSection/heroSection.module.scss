@@ -1,0 +1,144 @@
+@import "../../../asset/sass/global.scss";
+
+.animation {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  z-index: -1;
+  transform: rotate(10deg);
+}
+.hero-section {
+  @include flex(center, column);
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: inherit;
+  overflow: hidden;
+
+  &__wrapper {
+    @include flex(center);
+    margin-top: -4rem;
+    position: relative;
+    // z-index: 500;
+
+    h1 {
+      font-size: 6.5rem;
+      max-width: 120rem;
+      line-height: 135%;
+      text-align: center;
+
+      .text-purple {
+        color: $dark-purple;
+      }
+    }
+    .hero-section__text {
+      margin: 2rem 0;
+      text-align: center;
+      font-size: 2rem;
+      color: $ash;
+    }
+    .button-wrapper {
+      @include flex(center);
+      margin-top: 5rem;
+
+      .hero-section__button {
+        outline: none;
+        border: none;
+        background-color: $dark-purple;
+        width: 19rem;
+        height: 6rem;
+        border-radius: 1rem;
+        font-family: inherit;
+        font-size: 1.8rem;
+        color: $light-black;
+        font-weight: 500;
+        cursor: pointer;
+        @include flex(center);
+
+        .arrow {
+          width: 4rem;
+          height: 4rem;
+          color: $light-black;
+        }
+        // &:hover {
+        //   // background-color: $dracula;
+        // }
+      }
+      .hero-section__github {
+        @extend .hero-section__button;
+        background-color: $dracula;
+        border: 1px solid $light-ash;
+        color: $white;
+        margin-left: 2rem;
+
+        .github-icon {
+          color: inherit;
+          margin-right: 1.3rem;
+        }
+        &:hover {
+          background-color: $light-ash;
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+  //************ social media **************
+  .social-media {
+    @include flex;
+    gap: 3.5rem;
+    position: absolute;
+    bottom: 6rem;
+    font-size: 1.3rem;
+
+    .social-media--icon {
+      opacity: 0.7;
+    }
+    p:last-child,
+    .social-media--community {
+      cursor: pointer;
+
+      &:hover {
+        color: $purple;
+      }
+    }
+    .social-media--community {
+      @include flex(center);
+
+      span {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+
+  //************ Made By **************
+  .madeBy {
+    position: absolute;
+    bottom: 2rem;
+    opacity: 0.7;
+
+    .madeBy__text {
+      font-size: 1.3rem;
+
+      span {
+        text-decoration: underline;
+        cursor: pointer;
+        &:hover {
+          color: $purple;
+        }
+      }
+    }
+  }
+
+  .bottom_wrapper {
+    background-color: $ash-black;
+    width: 88%;
+    height: 30rem;
+    border-radius: 2rem;
+    position: absolute;
+    bottom: -26rem;
+    border: 0.5px solid $light-ash;
+  }
+}

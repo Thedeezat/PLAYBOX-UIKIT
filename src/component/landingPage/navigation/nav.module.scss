@@ -1,0 +1,42 @@
+@import "../../../asset/sass/global.scss";
+
+.navigation {
+  color: inherit;
+  @include flex;
+  position: relative;
+  z-index: 999;
+  padding: 3rem 7rem;
+
+  &__lists {
+    @include flex;
+    gap: 4rem;
+    font-size: 1.7rem;
+
+    .navigation__list {
+      list-style: none;
+      color: inherit;
+      cursor: pointer;
+
+      &:hover {
+        color: $purple;
+      }
+    }
+  }
+  .mode_theme {
+    background-color: $white;
+    width: 3.4rem;
+    padding: 0 1.5rem;
+    height: 4rem;
+    @include flex(flex-end);
+    border-radius: 2rem;
+    cursor: pointer;
+
+    .theme_icon {
+      color: $ash-black;
+      transform: scale(1.1);
+    }
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}

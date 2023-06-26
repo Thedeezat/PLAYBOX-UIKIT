@@ -1,0 +1,72 @@
+@import "../../../../../../../asset/sass/global.scss";
+
+.HomeContent {
+  //***************** Heading *********//
+  .HomeContent_heading {
+    @include flex(center, column);
+    align-items: flex-start;
+    padding: 0 3rem;
+    margin: 1rem 0;
+    background: rgba($light-ash, 0.4);
+    border-radius: 1.5rem;
+    width: 90%;
+    height: 27rem;
+
+    h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .homeContent_button_wrapper {
+      @include flex();
+      gap: 3rem;
+      position: relative;
+      margin-top: 3.5rem;
+
+      .homeContent_button {
+        outline: none;
+        border: 0.5px solid $light-ash;
+        background-color: rgba($ash, 0.07);
+        width: 16rem;
+        height: 6.5rem;
+        border-radius: 0.7rem;
+        font-family: inherit;
+        font-size: 1.4rem;
+        color: $white;
+        font-weight: 500;
+        cursor: pointer;
+        @include flex(center);
+
+        &:hover {
+          border-color: $light-purple;
+        }
+      }
+      .createFolder_wrapper {
+        width: 19rem;
+      }
+      .createFolder {
+        @include flex(center);
+        margin-right: 1rem;
+        background-color: rgba($ash, 0.1);
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+      }
+    }
+  }
+  //***************** component preview *********//
+  .components_preview {
+    margin-top: 7rem;
+
+    .components_heading,
+    .customised_example {
+      font-size: 1.6rem;
+      color: $white;
+    }
+    .layout_wrapper_home {
+      margin-top: 2.5rem;
+    }
+    .customised_example {
+      margin-top: 4rem;
+    }
+  }
+}

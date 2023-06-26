@@ -1,0 +1,103 @@
+@import "../../../../../../../asset/sass/global.scss";
+
+.home_content {
+  .get_started {
+    padding: 1rem 0;
+
+    .getStarted_overview {
+      font-size: 2.7rem;
+    }
+
+    .getStarted_text,
+    p {
+      font-size: 1.5rem;
+      opacity: 0.7;
+      margin: 2rem 0;
+      line-height: 180%;
+    }
+    .getStarted_heading {
+      font-weight: 400;
+      margin: 2rem 0;
+      margin-top: 4rem;
+      font-size: 2rem;
+    }
+    //framework types
+    .framework_types_wrapper {
+      @include flex(flex-start);
+      gap: 4rem;
+      margin-top: 3rem;
+
+      .framework_types {
+        @include flex(center, column);
+        background: rgba($white, 0.8);
+        width: 15rem;
+        height: auto;
+        padding-top: 1.2rem;
+        border-radius: 1.1rem;
+        color: $light-black;
+        font-size: 1.4rem;
+        overflow: hidden;
+
+        .framework_icon {
+          width: 4.5rem;
+          height: 4.5rem;
+          margin-bottom: 1.2rem;
+        }
+        span {
+          width: 100%;
+          text-align: center;
+          padding: 0.8rem 0;
+          font-weight: 600;
+          background-color: $purple;
+          color: rgba($white, 0.8);
+        }
+      }
+      .framework_types__gatsby span {
+        background-color: purple;
+      }
+      .framework_types__next span {
+        background-color: $light-black;
+      }
+      .framework_types__typrscript {
+        span {
+          background-color: #09b0cd;
+        }
+        .framework_icon {
+          transform: scale(0.75);
+        }
+      }
+      .framework_types__angular span {
+        background-color: #d61a15;
+      }
+    }
+    //*********** CSS framework *******////
+    .framework_css_types {
+      margin-top: 3rem;
+
+      .framework_types__sass span {
+        background-color: #c76493;
+      }
+      .framework_types__tailwind {
+        transform: scale(0.9);
+        span {
+          background-color: #38bcf8;
+        }
+      }
+      .framework_types__bootstrap {
+        .framework_icon {
+          transform: scale(0.75);
+        }
+        span {
+          background-color: #7912f1;
+        }
+      }
+    }
+    .browser_support {
+      margin-top: 6rem;
+    }
+    .import_file {
+      margin-top: 6rem;
+      margin-bottom: 6rem;
+    }
+  }
+}

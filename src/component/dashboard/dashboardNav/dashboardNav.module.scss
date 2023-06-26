@@ -1,0 +1,83 @@
+@import "../../../asset/sass/global.scss";
+
+.dashboard_navigation {
+  padding: 3rem 4rem;
+  @include flex();
+
+  .dashboard__contents {
+    font-size: 1.5rem;
+    width: 78%;
+    @include flex();
+
+    // Pages
+    .page_section {
+      @include flex(center);
+      gap: 2rem;
+
+      .create_folder {
+        padding: 1rem 1rem;
+        @include flex(center);
+        border-radius: 1.3rem;
+        background-color: $light-ash;
+        font-size: 1rem;
+        cursor: pointer;
+
+        span {
+          opacity: 0.7;
+        }
+      }
+    }
+    // Forms
+    .input_section {
+      @include flex(center);
+      gap: 2rem;
+
+      .searchbar_wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .searchbar {
+          border: 1px solid $light-ash;
+          border-radius: 0.8rem;
+          padding: 1rem 0;
+          padding-left: 3rem;
+          font-family: inherit;
+          width: 18rem;
+          height: 1rem;
+          outline: none;
+          background-color: transparent;
+          color: $white;
+          font-size: 1.2rem;
+
+          &:focus {
+            border-color: $light-purple;
+          }
+
+          &_icon {
+            position: absolute;
+            left: 1rem;
+            color: $white;
+            opacity: 0.3;
+          }
+        }
+      }
+      // social media
+      .socialMedia_container {
+        width: 3.5rem;
+        border-radius: 0.8rem;
+        height: 3.2rem;
+        @include flex(center);
+        border: 1px solid $light-ash;
+        background-color: transparent;
+        cursor: pointer;
+
+        .socialMedia_icon {
+          color: $purple;
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+}

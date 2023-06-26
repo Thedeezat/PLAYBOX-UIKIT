@@ -1,0 +1,222 @@
+@import "../../../asset/sass/global.scss";
+
+.sidebar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100vw;
+}
+.dashboard_sidebar {
+  width: 24vw;
+  margin-left: 4rem;
+  scroll-behavior: smooth;
+  overflow: scroll;
+  overflow-y: scroll;
+  height: 85vh;
+  position: relative;
+
+  .dashboard_sidebar__wrapper {
+    @include flex(flex-start, column);
+    align-items: flex-start;
+
+    //*************** Menu **********//
+    .sidebar_menu {
+      @include flex(flex-start, column);
+      align-items: flex-start;
+      width: 90%;
+      height: auto;
+      padding: 2rem 0;
+      background-color: $light-black;
+      border-radius: 1.5rem;
+      gap: 0.5rem;
+
+      .item_active {
+        color: $purple;
+        background-color: $light-ash;
+      }
+
+      .menu_items {
+        margin: 0 1.6rem;
+        opacity: 0.8;
+        cursor: pointer;
+        @include flex(flex-start);
+        width: 83%;
+        border-radius: 0.8rem;
+        padding: 0.8rem 0;
+        padding-left: 1rem;
+        transition: 0.2s all ease;
+
+        &_icon {
+          margin-right: 0.8rem;
+          transform: scale(1.2);
+        }
+
+        &:hover {
+          background-color: $light-ash;
+        }
+      }
+    }
+    //*********** Components tab ***********//
+    .sidebar_components {
+      margin: 3rem 0;
+      @include flex(flex-start, column);
+      align-items: flex-start;
+      font-size: 1.4rem;
+      gap: 0.7rem;
+
+      &_container {
+        @include flex(flex-start);
+        position: relative;
+        width: 100%;
+        padding-right: 4.5rem;
+        padding-left: 1rem;
+        padding-top: 0.8rem;
+        padding-bottom: 0.8rem;
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgba($light-ash, 0.4);
+          border-radius: 0.8rem;
+        }
+
+        .sidebarComponent_icon_wrapper {
+          @include flex(center);
+          border-radius: 0.5rem;
+          background-color: transparent;
+          border: 1px solid $light-ash;
+          width: 2.6rem;
+          height: 2.6rem;
+          margin-right: 1rem;
+
+          .sidebarComponent_icon {
+            color: $purple;
+            transform: scale(1.3);
+          }
+        }
+        .arrow_down {
+          position: absolute;
+          transform: rotate(180deg);
+          right: 1rem;
+          margin-left: 5rem;
+        }
+        .arrow_close {
+          transform: rotate(0deg);
+        }
+      }
+    }
+    //************* donate *************//
+    .sidebar_donate {
+      margin-top: 6rem;
+      @include flex(center, column);
+      align-items: center;
+      width: 90%;
+      height: auto;
+      padding: 2rem 0;
+      background-color: $light-black;
+      border-radius: 1.5rem;
+      gap: 1rem;
+      opacity: 0.9;
+      text-align: center;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
+      button {
+        border: none;
+        outline: none;
+        background: $purple;
+        color: $white;
+        font-weight: 500;
+        font-family: inherit;
+        width: 80%;
+        height: auto;
+        padding: 0.9rem 0;
+        border-radius: 1rem;
+        cursor: pointer;
+        font-size: 1.2rem;
+      }
+    }
+
+    //************ HElP ************//
+    .sidebar_help {
+      margin-top: 3rem;
+      @include flex(center, column);
+      align-items: flex-start;
+      gap: 1.5rem;
+      font-size: 1.4rem;
+      // position: absolute;
+      // bottom: 3.7rem;
+
+      p {
+        color: $white;
+        @include flex(center);
+        opacity: 0.8;
+
+        .sidebarHelp_icon {
+          margin-right: 1rem;
+        }
+      }
+    }
+  }
+
+  p {
+    cursor: pointer;
+  }
+
+  .get_started,
+  .concept {
+    @include flex(flex-start, column);
+    align-items: flex-start;
+    position: relative;
+    top: 1rem;
+    gap: 2.5rem;
+
+    .dashboard_heading {
+      color: $light-black;
+    }
+  }
+  .concept {
+    margin-top: 1rem;
+  }
+  .active {
+    color: $light-purple;
+  }
+}
+
+//************ Dropdown ************//
+.dropdown_wrapper {
+  margin: 0rem 3rem;
+  color: rgba($white, 0.8);
+  width: 100%;
+
+  .dropdown_text {
+    font-size: 1.4rem;
+    padding: 0 1.5rem;
+    margin-bottom: 1rem;
+    padding: 0.7rem 2rem;
+
+    &:hover {
+      color: rgba($white, 1);
+      background-color: rgba($light-ash, 0.4);
+      border-radius: 0.8rem;
+    }
+  }
+  .dropdown_active {
+    color: rgba($purple, 1);
+    background-color: rgba($light-ash, 0.4);
+    border-radius: 0.8rem;
+  }
+}
+
+.dropdown_show {
+  display: block;
+  transition: all 1s ease;
+}
+.dropdown_hide {
+  display: none;
+}
