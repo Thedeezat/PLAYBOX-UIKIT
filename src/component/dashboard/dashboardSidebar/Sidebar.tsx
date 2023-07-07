@@ -239,6 +239,7 @@ export default function DashboardSidebar({ setPageName }: Props) {
             selectedTab={selectedTab}
             setSelectedTab={setSelectedTab}
             setPageName={setPageName}
+            setShowDropdown={setShowDropdown}
           />
         </TabContent>
         {/* Custom tabs */}

@@ -6,12 +6,14 @@ type Props = {
   setPageName: (pageName: string) => void;
   setSelectedTab: (index: string) => void;
   selectedTab: string;
+  setShowDropdown?: (showdropdown: boolean) => void;
 };
 
 export default function Files({
   setPageName,
   setSelectedTab,
   selectedTab,
+  setShowDropdown,
 }: Props) {
   const customize = (
     <button className={styles.files__btn}> Customize components </button>
@@ -27,7 +29,7 @@ export default function Files({
       <div className={styles.files_btn_wrapper}>
         {/* custom components */}
         <TabItem
-          title="None"
+          title="Customize"
           setPageName={setPageName}
           setSelectedTab={setSelectedTab}
           selectedTab={selectedTab}
@@ -38,13 +40,14 @@ export default function Files({
 
         {/* check components */}
         <TabItem
-          title="None"
+          title="Layout"
           setPageName={setPageName}
           setSelectedTab={setSelectedTab}
           selectedTab={selectedTab}
           index="tab6"
           classname={styles.item_active}
           jumpComponent={checkoutComponent}
+          setShowDropdown={setShowDropdown}
         />
       </div>
     </section>

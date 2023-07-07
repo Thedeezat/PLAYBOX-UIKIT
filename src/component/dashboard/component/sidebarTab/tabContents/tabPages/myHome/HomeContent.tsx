@@ -23,7 +23,7 @@ const textLists: ImageTextObject[] = [
   { image: accordian, text: "Accordion" },
   { image: menu, text: "Menu" },
   { image: tabs, text: "Tabs" },
-  { image: input, text: "input" },
+  { image: input, text: "Input" },
   { image: popover, text: "Popover" },
 ];
 

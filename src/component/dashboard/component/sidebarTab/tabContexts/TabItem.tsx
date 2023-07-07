@@ -12,6 +12,7 @@ type Props = {
   jumpComponent?: React.ReactNode;
   setSelectedTab: (index: string) => void;
   setPageName: (pageName: string) => void;
+  setShowDropdown?: (showdropdown: boolean) => void;
 };
 
 const TabItem: React.FunctionComponent<Props> = ({
@@ -24,10 +25,12 @@ const TabItem: React.FunctionComponent<Props> = ({
   index,
   setPageName,
   componentLists,
+  setShowDropdown,
 }: Props) => {
   const handleClick = () => {
     setSelectedTab(index);
     setPageName(title);
+    setShowDropdown && setShowDropdown(true);
   };
 
   return (

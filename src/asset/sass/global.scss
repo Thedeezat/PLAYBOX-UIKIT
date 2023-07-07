@@ -1,5 +1,5 @@
-@import './mixin.scss';
-@import './variables.scss';
+@import "./mixin.scss";
+@import "./variables.scss";
 
 *,
 *::before,
@@ -15,11 +15,13 @@ html {
 body {
   background: $light-black;
   height: 100vh;
+  max-width: 1500px;
+  margin: 0 auto;
   width: 100%;
   color: $white;
   scroll-behavior: smooth;
-  overflow-x: hidden;
-  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
+  font-family: "Montserrat", sans-serif;
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
   overflow: -moz-scrollbars-none; /* Old Firefox */
@@ -60,9 +62,8 @@ a {
 ::-webkit-scrollbar {
   display: none;
 }
-//************** components ***********//
-//*************************************//
-
+//************** Modal components ***********//
+//******************************************//
 .layoutPages {
   margin-top: 1rem;
 
@@ -301,37 +302,30 @@ a {
           &__options {
             margin-top: 2rem;
             @include flex(center);
-            scroll-behavior: smooth;
             height: 11rem;
             flex-direction: column;
             align-items: flex-start;
-            opacity: 0.6;
-            gap: 1.8rem;
-            color: $white;
-            background-color: rgba($gray, 0.1);
+            // opacity: 0.6;
+            gap: 2.2rem;
+            color: rgba($white, 0.9);
+            background-color: rgba($gray, 0.2);
             width: 100%;
-            justify-content: flex-start;
+            justify-content: center;
             border-radius: 0.2rem;
-            padding: 2rem 0;
-            overflow-y: scroll;
+            padding: 1.8rem 0;
 
-            span {
-              display: block;
-              cursor: pointer;
+            .tooltip-item {
               margin: 0 auto;
-              padding: 0.5rem 0.5rem;
-              padding-left: 1rem;
-              border-radius: 0.5rem;
-              width: 80%;
-              transition: all 0.1s ease-in-out;
+              padding-left: 2rem;
+              cursor: pointer;
 
-              &:first-child {
-                background-color: rgba($purple, 0.1);
-              }
               &:hover {
-                background-color: rgba($purple, 0.1);
+                color: $purple;
               }
             }
+          }
+          .option-active {
+            background-color: rgba($purple, 0.1);
           }
         }
       }
@@ -347,22 +341,49 @@ a {
       .generate_button {
         border: none;
         background-color: $light-purple;
-        width: 15rem;
-        padding: 1.4rem 0;
+        width: 13rem;
+        padding: 1.2rem 0;
         border-radius: 1rem;
         font-family: inherit;
-        color: $light-black;
+        color: #f5f5f5;
         font-size: 1.6rem;
         cursor: pointer;
-        font-weight: 600;
+        font-weight: 500;
         border: 1px solid $light-purple;
-        transition: all 0.04s ease-in;
+        // transition: all 0.1s ease;
 
         &:hover {
-          color: $white;
-          background: transparent;
+          // color: $white;
+          // background-color: transparent;
+          opacity: 0.9;
         }
       }
     }
   }
+}
+
+//******** Tooltip ************//
+.tooltip-container {
+  position: relative;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 4px;
+  position: absolute;
+  z-index: 1;
+  top: 100%; /* Position at the bottom */
+  left: 105%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 9px; /* Adjust the font size */
+  max-width: 150px; /* Adjust the maximum width */
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
 }
