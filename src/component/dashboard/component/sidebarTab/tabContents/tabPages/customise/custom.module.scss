@@ -25,6 +25,7 @@ select {
     //*********************//
     .recentComponents_container {
       @include flex();
+      gap: 2rem;
 
       .recentComponents__head {
         font-size: 1.8rem;
@@ -39,28 +40,16 @@ select {
       .dropdown_wrapper {
         @include flex(center);
         position: relative;
-
-        .dropdown {
-          font-size: 1.2rem;
-          background-color: $light-ash;
-          padding: 1rem 1.2rem;
-          padding-right: 3rem;
-          text-align: center;
-          border-radius: 0.4rem;
-          margin-left: 2rem;
-          border: none;
-          outline: none;
-          color: inherit;
-          font-family: inherit;
-          cursor: pointer;
-
-          &_icon {
-            position: absolute;
-            right: 1rem;
-          }
-        }
       }
     }
+  }
+  .dropdown {
+    font-size: 1.5rem;
+    border: none !important;
+    outline: none !important;
+    color: black !important;
+    font-family: inherit;
+    width: 20rem;
   }
   //******** Code Editor *********//
   //*****************************//
@@ -73,7 +62,6 @@ select {
     .code_editor__header {
       display: flex;
       justify-content: space-between;
-      padding: 0 2rem;
       border: 1px solid rgba($dracula, 0.3);
       height: 5.5rem;
       width: 100%;
@@ -89,7 +77,7 @@ select {
 
         .header__tabs {
           font-size: 1.3rem;
-          padding-right: 1.5rem;
+          padding: 1.5rem;
           @extend .header__tabs;
         }
       }
@@ -120,8 +108,8 @@ select {
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
-      padding: 2rem;
-      height: 37rem;
+      // padding: 2rem;
+      height: 50rem;
       width: 100%;
       background-color: rgba($dracula, 0.3);
       border: 1px solid rgba($dracula, 0.3);
@@ -134,28 +122,4 @@ select {
   }
 
   // End of code editor
-
-  //**** geneate button
-  .button_container {
-    @include flex;
-    justify-content: flex-end;
-    margin: 2.5rem 0;
-    margin-left: 4rem;
-    position: relative;
-    right: 20%;
-    width: 100%;
-
-    .generate_button {
-      background-color: $light-purple;
-      width: 15rem;
-      padding: 1.4rem 1rem;
-      border-radius: 1rem;
-      font-family: inherit;
-      color: #f5f5f5;
-      font-size: 1.6rem;
-      cursor: not-allowed;
-      font-weight: 500;
-      border: 1px solid $light-purple;
-    }
-  }
 }

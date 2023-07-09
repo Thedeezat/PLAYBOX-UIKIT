@@ -1,25 +1,40 @@
 import React from "react";
 import styles from "../custom.module.scss";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import Select from "react-select";
+import { LanguageOptions } from "../constants/languageOption";
 
-export default function LanguageDropdown() {
+interface Option {
+  value: string;
+  label: string;
+}
+interface Props {
+  onSelectChange: (value: string) => void;
+  selectedValue: string;
+}
+
+export default function LanguageDropdown({
+  onSelectChange,
+  selectedValue,
+}: Props) {
+  const handleSelectChange = (selectedOption: Option | Option[] | null) => {
+    if (selectedOption) {
+      const value = Array.isArray(selectedOption)
+        ? selectedOption[0].value
+        : selectedOption.value;
+      onSelectChange(value);
+    }
+  };
   return (
-    <div className={styles.custom_heading_theme}>
-      <div className={styles.dropdown_wrapper}>
-        {" "}
-        <select className={styles.dropdown}>
-          <option disabled selected>
-            index.html (ES6)
-          </option>
-          <option value="React">React (16.0)</option>
-          <option value="Typescript">Typescript (12.1)</option>
-          <option value="Nodejs">Nodejs (18.0)</option>
-        </select>
-        <KeyboardArrowDownIcon
-          fontSize="medium"
-          className={styles.dropdown_icon}
-        />{" "}
-      </div>{" "}
+    <div>
+      <Select
+        className={styles.dropdown}
+        placeholder={`Filter By Category`}
+        options={LanguageOptions}
+        defaultValue={LanguageOptions[0]}
+        value={LanguageOptions.find((option) => option.value === selectedValue)}
+        onChange={handleSelectChange}
+      />
     </div>
   );
 }

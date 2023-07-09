@@ -1,27 +1,84 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../custom.module.scss";
+import Editor from "@monaco-editor/react";
+import CodePreviewModal from "../../../../../../common/codePreview/CodePreviewModal";
 
-export default function CustomCodeEditor() {
+interface CodeEditorProps {
+  onChange: (label: string, value: string) => void;
+  language: string;
+  code: string;
+  theme: string;
+}
+export default function CustomCodeEditor({
+  onChange,
+  language,
+  code,
+  theme,
+}: CodeEditorProps) {
+  const [value, setValue] = useState(code || "");
+  const [modal, setModal] = useState<boolean>(false);
+
+  const handleModalOpen = () => {
+    setModal(true);
+  };
+  const handleEditorChange = (value: string | undefined) => {
+    setValue(value || "");
+    if (onChange) {
+      onChange("code", value || "");
+    }
+  };
+
   return (
     <div className={styles.custom_board}>
       <div className={styles.code_editor__header}>
         {/* code tabs */}
         <div className={styles.languageType__tab}>
-          <p className={styles.header__tabs}>index.html</p>
+          <p className={styles.header__tabs}>{language ? language : ""}</p>
         </div>
         {/* action tabs */}
         <div className={styles.action__tabs}>
-          <p className={styles.header__tabs}>Save file</p>
-          <p className={styles.header__tabs}>New tab</p>
-          <p className={styles.header__tabs}>Run code</p>
+          <p
+            className={`${styles.header__tabs} ${styles.header__tabs__choose}`}
+          >
+            Choose File
+          </p>
+          <p
+            className={`${styles.header__tabs} ${styles.header__tabs__save}`}
+            onClick={handleModalOpen}
+          >
+            Save Component
+          </p>
+          {/* <p className={`${styles.header__tabs} ${styles.header__tabs__run}`}>
+            Run code
+          </p> */}
         </div>
       </div>
+      {modal && <CodePreviewModal modal={modal} setModal={setModal} />}
 
       {/* main editor */}
-      <textarea
+      <Editor
         className={styles.code_editor}
-        placeholder="Type HTML code here"
-      ></textarea>
+        width={`100%`}
+        language={language || "javascript"}
+        value={value}
+        theme={theme}
+        defaultValue={"/** Add Code Here **/"}
+        onChange={handleEditorChange}
+        options={{
+          autoIndent: "full",
+          automaticLayout: true,
+          colorDecorators: true,
+          fontSize: 13,
+          lineHeight: 24,
+          contextmenu: true,
+          minimap: {
+            enabled: false,
+          },
+          wordWrap: "on",
+          formatOnPaste: true,
+          formatOnType: true,
+        }}
+      />
     </div>
   );
 }
