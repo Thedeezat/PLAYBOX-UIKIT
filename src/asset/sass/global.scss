@@ -26,6 +26,9 @@ body {
   -ms-overflow-style: none; /* IE 10+ */
   overflow: -moz-scrollbars-none; /* Old Firefox */
 }
+label {
+  display: none;
+}
 a {
   text-decoration: none;
   color: inherit;
@@ -362,6 +365,7 @@ a {
 }
 
 //*********** Code Preview ********* //
+//**********************************//
 .codePreview-overlay {
   .modal-bg {
     position: absolute;
@@ -377,8 +381,8 @@ a {
   }
 
   .codePreview-modal {
-    height: 40vh;
-    width: 45rem;
+    height: 25rem;
+    width: 40rem;
     left: 2.5rem;
     padding: 2rem;
     top: 4rem;
@@ -392,7 +396,7 @@ a {
       width: 100%;
 
       h2 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         font-weight: 500;
       }
       .codepreview__menu-btn {
@@ -419,10 +423,162 @@ a {
       }
     }
   }
+  .codepreview__intro {
+    margin-top: 40px;
+    text-align: center;
+
+    h3 {
+      font-size: 1.8rem;
+      font-weight: 500;
+    }
+    p {
+      padding-top: 15px;
+      font-size: 1.5rem;
+    }
+  }
+  .divider {
+    width: 100%;
+    background-color: rgb($gray, 0.2);
+    height: 0.1rem;
+    display: block;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+  .form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 25px;
+
+    input {
+      width: 25rem;
+      padding: 1rem 1.5rem;
+      outline: none;
+      border: 1px solid rgb($gray, 0.2);
+      background-color: rgba($light-black, 0.2);
+      border-radius: 0.8rem;
+      font-family: inherit;
+      color: $ash;
+    }
+    .input-active {
+      border-color: rgba($light-purple, 0.3) !important;
+    }
+    input:hover {
+      border-color: rgba($light-purple, 0.3);
+    }
+    ::placeholder {
+      color: $ash;
+    }
+    button {
+      outline: none;
+      background-color: rgba($light-purple, 0.3);
+      border-radius: 0.8rem;
+      font-family: inherit;
+      font-size: 1.4rem;
+      width: 8rem;
+      padding: 1rem 0;
+      color: $ash;
+      border: none;
+    }
+    .buttoon-active {
+      background-color: rgba($light-purple, 1) !important;
+      cursor: pointer !important;
+    }
+  }
+  //**** createFile ******//
+  .createFile {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+
+    .folder-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-left: 1.5rem;
+
+      .folderBox {
+        width: 35px;
+        height: 30px;
+        border-radius: 0.3rem;
+        background-color: rgba($gray, 0.9);
+      }
+      p {
+        font-size: 1.7rem;
+      }
+    }
+    .createFile__form {
+      margin-top: 2rem;
+      margin-left: 3.1rem;
+
+      .createFile__input-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        position: relative;
+
+        .arrow-icon {
+          color: rgba($gray, 0.9);
+          transform: rotate(-90deg);
+        }
+        input {
+          width: 30rem;
+          padding: 1rem 0.2rem;
+          outline: none;
+          border: none;
+          border-bottom: 1px solid rgb($gray, 0.6);
+          background-color: transparent;
+          font-family: inherit;
+          color: $ash;
+          font-size: 1.3rem;
+        }
+        .inputActive {
+          border-color: rgba($light-purple, 0.4) !important;
+        }
+        .edit-icon {
+          color: rgba($gray, 0.9);
+          position: absolute;
+          right: 0;
+        }
+      }
+      .submit-btn-container {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+        margin-top: 50px;
+
+        .submit-btn {
+          outline: none;
+          background-color: rgba($light-purple, 1);
+          border-radius: 0.8rem;
+          font-family: inherit;
+          font-size: 1.4rem;
+          width: 10rem;
+          padding: 1rem 0;
+          color: $ash;
+          border: none;
+          cursor: pointer;
+        }
+        .button-not-active {
+          background-color: rgba($light-purple, 0.3);
+          cursor: auto;
+        }
+      }
+    }
+    ::placeholder {
+      color: rgba($ash, 0.9);
+    }
+  }
 }
 
-//******** Tooltip ************//
-//****************************//
+//******** Tooltip ***********************//
+//***************************************//
 .tooltip-container {
   position: relative;
 }

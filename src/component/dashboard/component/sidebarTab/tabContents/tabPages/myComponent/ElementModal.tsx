@@ -4,8 +4,6 @@ import DownloadIcon from "@mui/icons-material/Download";
 
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
-import CircularProgress from "@mui/material/CircularProgress";
-
 import Modaltooltip from "../../../../../common/Modaltooltip";
 
 interface ImageTextObject {
@@ -76,10 +74,10 @@ export default function ElementModal({
                 <div className="modal-overlay">
                   <div className="modal-bg" onClick={handleClose}></div>
                   {/* Close */}
-                  <div className="menu-btn" onClick={handleClose}>
+                  {/* <div className="menu-btn" onClick={handleClose}>
                     <span className="line"></span>
                     <span className="line"></span>
-                  </div>
+                  </div> */}
                   {/* modal */}
                   <div className="modal">
                     {/* Heading */}

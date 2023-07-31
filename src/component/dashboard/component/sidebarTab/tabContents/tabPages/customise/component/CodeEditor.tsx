@@ -48,12 +48,11 @@ export default function CustomCodeEditor({
           >
             Save Component
           </p>
-          {/* <p className={`${styles.header__tabs} ${styles.header__tabs__run}`}>
-            Run code
-          </p> */}
         </div>
       </div>
-      {modal && <CodePreviewModal modal={modal} setModal={setModal} />}
+      {modal && (
+        <CodePreviewModal modal={modal} setModal={setModal} codeValue={value} />
+      )}
 
       {/* main editor */}
       <Editor

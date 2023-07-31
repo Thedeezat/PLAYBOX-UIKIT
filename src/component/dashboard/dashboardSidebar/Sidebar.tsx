@@ -102,7 +102,7 @@ export default function DashboardSidebar({ setPageName }: Props) {
             />
             {/* Files */}
             <TabItem
-              title="My files"
+              title="Code Vault"
               index="tab3"
               setPageName={setPageName}
               selectedTab={selectedTab}
