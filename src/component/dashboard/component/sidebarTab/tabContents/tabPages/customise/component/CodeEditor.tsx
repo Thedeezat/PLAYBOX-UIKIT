@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "../custom.module.scss";
 import Editor from "@monaco-editor/react";
 import CodePreviewModal from "../../../../../../common/codePreview/CodePreviewModal";
+import { useItemContext } from "../../../../../../common/context/AppContext";
 
 interface CodeEditorProps {
   onChange: (label: string, value: string) => void;

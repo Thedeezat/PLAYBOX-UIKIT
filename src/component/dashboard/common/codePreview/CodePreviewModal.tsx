@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "../../../../asset/sass/global.scss";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import SnackbarComponent from "../SnackbarPopup";
+import { useItemContext } from "../context/AppContext";
 
 interface modalProps {
   modal: boolean;
@@ -10,16 +12,16 @@ interface modalProps {
 }
 
 export default function CodePreviewModal({ codeValue, setModal }: modalProps) {
+  const { codeArray, setCodeArray } = useItemContext();
+
   const handleClose = () => {
     setModal(false);
   };
   const [collectionName, setCollectionName] = useState("");
   const [saveCodeFolder, setSaveCodeFolder] = useState(false);
   const [fileName, setFileName] = useState("ar7fght89mx0hji");
-
-  const handleFileNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setFileName(event.target.value);
-  };
+  const [openSnackbar, setOpenSnacbar] = useState(false);
+  // const [codeArray, setCodeArray] = useState<any[]>([]);
 
   const handleInputChange = (e: any) => {
     setCollectionName(e.target.value);
@@ -31,15 +33,32 @@ export default function CodePreviewModal({ codeValue, setModal }: modalProps) {
 
     setSaveCodeFolder(true);
   };
+
+  // Create Folder function
+  const handleFolderName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setFileName(event.target.value);
+  };
+
+  // Create File function
   const handleFileForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const codeArray = [
-      collectionName && collectionName,
-      fileName && fileName,
-      codeValue && codeValue,
-    ];
-    console.log(codeArray);
+    const newItem = {
+      collectionName: collectionName,
+      fileName: fileName,
+      codeValue: codeValue,
+    };
+
+    const updatedCodeArray: any[] = [...codeArray, newItem];
+    setCodeArray(updatedCodeArray);
+    setOpenSnacbar(true);
+
+    // Reset form and states
+    setTimeout(() => {
+      setSaveCodeFolder(false);
+      setCollectionName("");
+      setFileName("ar7fght89mx0hji");
+    }, 1000);
   };
 
   return (
@@ -55,7 +74,7 @@ export default function CodePreviewModal({ codeValue, setModal }: modalProps) {
           </div>
         </div>
 
-        {/* Create a folder */}
+        {/* Create a component */}
         {saveCodeFolder ? (
           <div className="createFile">
             <div className="folder-options">
@@ -71,7 +90,7 @@ export default function CodePreviewModal({ codeValue, setModal }: modalProps) {
                   value={fileName}
                   id="componenet-name"
                   className={`${fileName ? "inputActive" : ""}`}
-                  onChange={handleFileNameChange}
+                  onChange={handleFolderName}
                   placeholder="Component Name"
                   required
                 />
@@ -86,6 +105,7 @@ export default function CodePreviewModal({ codeValue, setModal }: modalProps) {
               </div>
               <div className="submit-btn-container">
                 <button
+                  type="submit"
                   className={`submit-btn ${
                     fileName ? "" : "button-not-active"
                   }`}
@@ -94,6 +114,11 @@ export default function CodePreviewModal({ codeValue, setModal }: modalProps) {
                 </button>
               </div>
             </form>
+            <SnackbarComponent
+              openSnackbar={openSnackbar}
+              setOpenSnackbar={setOpenSnacbar}
+              snackbarMessage="Code Saved 🥳"
+            />
           </div>
         ) : (
           <>

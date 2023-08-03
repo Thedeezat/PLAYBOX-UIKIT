@@ -42,3 +42,57 @@
     }
   }
 }
+
+//********** Code Vault ***************/
+//************************************/
+.folder_section {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  // grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 3.5rem;
+  // height: 60vh;
+  padding-top: 2.5rem;
+  padding-right: 15rem;
+
+  .folderComponent {
+    border: 1.3px solid rgba($gray, 0.4);
+    padding: 1rem 2rem;
+    border-radius: 1.4rem;
+    color: $purple;
+    cursor: pointer;
+    transition: all 0.6s ease;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 18rem;
+    gap: 2.5rem;
+
+    .folderIcon {
+      color: inherit;
+    }
+    .folderAnimation {
+      max-width: 73px;
+    }
+    .textContainer {
+      margin-top: 0.8rem;
+
+      p {
+        padding-left: 0.8rem;
+        color: #dbd4d4;
+        text-transform: capitalize;
+        font-weight: 600;
+        font-size: 1.7rem;
+      }
+      .fileNumber {
+        font-size: 1.4rem;
+        margin-top: 1rem;
+        opacity: 0.6;
+        font-weight: 400;
+      }
+    }
+
+    &:hover {
+      border-color: rgba($light-purple, 0.3);
+    }
+  }
+}
