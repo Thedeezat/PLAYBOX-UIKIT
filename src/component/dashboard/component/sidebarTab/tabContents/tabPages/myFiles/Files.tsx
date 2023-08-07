@@ -29,7 +29,7 @@ export default function Files({
 
   return (
     <>
-      {codeArray ? (
+      {codeArray.length > 0 ? (
         <>
           <CodeVualt />
         </>

@@ -1,99 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../../files.module.scss";
 import FolderIcon from "@mui/icons-material/Folder";
-import Lottie from "lottie-react";
-import folder from "./lottie/folder.json";
+import { useItemContext } from "../../../../../../../common/context/AppContext";
 
 export default function CodeVualt() {
+  const { codeArray } = useItemContext();
+
   return (
     <div className={styles.folder_section}>
-      {/* Folder */}
-      <div className={styles.folderComponent}>
-        <Lottie animationData={folder} className={styles.folderAnimation} />
-
-        <div className={styles.textContainer}>
-          <p>lura</p>
-          <p className={styles.fileNumber}>5 Files</p>
-        </div>
-      </div>
-
-      {/* Folder */}
-      <div className={styles.folderComponent}>
-        <Lottie animationData={folder} className={styles.folderAnimation} />
-
-        <div className={styles.textContainer}>
-          <p>Random</p>
-          <p className={styles.fileNumber}>4 Files</p>
-        </div>
-      </div>
-
-      {/* Folder */}
-      <div className={styles.folderComponent}>
-        <Lottie animationData={folder} className={styles.folderAnimation} />
-
-        {/* <FolderIcon
-          className={styles.folderIcon}
-          fontSize="large"
-          sx={{
-            width: "70px",
-            height: "70px",
-          }}
-        /> */}
-        <div className={styles.textContainer}>
-          <p>Random</p>
-          <p className={styles.fileNumber}>2 Files</p>
-        </div>
-      </div>
-
-      {/* Folder */}
-      <div className={styles.folderComponent}>
-        <Lottie animationData={folder} className={styles.folderAnimation} />
-
-        <div className={styles.textContainer}>
-          <p>Random</p>
-          <p className={styles.fileNumber}>8 Files</p>
-        </div>
-      </div>
-
-      {/* Folder */}
-      <div className={styles.folderComponent}>
-        <Lottie animationData={folder} className={styles.folderAnimation} />
-
-        <div className={styles.textContainer}>
-          <p>Random</p>
-          <p className={styles.fileNumber}>4 Files</p>
-        </div>
-      </div>
-
-      {/* Folder */}
-      <div className={styles.folderComponent}>
-        <Lottie animationData={folder} className={styles.folderAnimation} />
-
-        <div className={styles.textContainer}>
-          <p>Random</p>
-          <p className={styles.fileNumber}>4 Files</p>
-        </div>
-      </div>
-
-      {/* Folder */}
-      <div className={styles.folderComponent}>
-        <Lottie animationData={folder} className={styles.folderAnimation} />
-
-        <div className={styles.textContainer}>
-          <p>Random</p>
-          <p className={styles.fileNumber}>4 Files</p>
-        </div>
-      </div>
-
-      {/* Folder */}
-      <div className={styles.folderComponent}>
-        <Lottie animationData={folder} className={styles.folderAnimation} />
-
-        <div className={styles.textContainer}>
-          <p>Random</p>
-          <p className={styles.fileNumber}>4 Files</p>
-        </div>
-      </div>
+      {codeArray &&
+        codeArray.map((component, index) => (
+          <div className={styles.folderComponent} key={index}>
+            {/* Folder */}
+            <FolderIcon
+              className={styles.folderIcon}
+              fontSize="large"
+              sx={{
+                width: "58px",
+                height: "58px",
+              }}
+            />
+            <div className={styles.textContainer}>
+              <p>{component.collectionName}</p>
+              <p className={styles.fileNumber}>
+                {" "}
+                {component.fileNames.length} Files
+              </p>
+            </div>
+          </div>
+        ))}
     </div>
   );
 }

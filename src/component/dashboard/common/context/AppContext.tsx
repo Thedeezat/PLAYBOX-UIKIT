@@ -8,7 +8,6 @@ import React, {
 } from "react";
 
 interface ContextValue {
-  name: string;
   codeArray: any[];
   setCodeArray: Dispatch<React.SetStateAction<any[]>>;
 }
@@ -28,10 +27,7 @@ interface Props {
 export default function AppContext({ children }: Props) {
   const [codeArray, setCodeArray] = useState<any[]>([]);
 
-  const name = "hadiza";
-
   const contextValue = {
-    name,
     codeArray,
     setCodeArray,
   };

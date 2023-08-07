@@ -20,8 +20,8 @@ export default function CodePreviewModal({ codeValue, setModal }: modalProps) {
   const [collectionName, setCollectionName] = useState("");
   const [saveCodeFolder, setSaveCodeFolder] = useState(false);
   const [fileName, setFileName] = useState("ar7fght89mx0hji");
+  const [fileCollection, setFileCollection] = useState<string[]>([fileName]);
   const [openSnackbar, setOpenSnacbar] = useState(false);
-  // const [codeArray, setCodeArray] = useState<any[]>([]);
 
   const handleInputChange = (e: any) => {
     setCollectionName(e.target.value);
@@ -43,14 +43,33 @@ export default function CodePreviewModal({ codeValue, setModal }: modalProps) {
   const handleFileForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    const existingIndex = codeArray.findIndex(
+      (item) => item.collectionName === collectionName
+    );
+
+    const updatedFileCollection =
+      existingIndex !== -1
+        ? Array.from(new Set([...fileCollection, fileName]))
+        : [fileName];
+
     const newItem = {
       collectionName: collectionName,
-      fileName: fileName,
+      fileNames: updatedFileCollection,
       codeValue: codeValue,
     };
 
-    const updatedCodeArray: any[] = [...codeArray, newItem];
+    const updatedCodeArray =
+      existingIndex !== -1
+        ? [
+            ...codeArray.slice(0, existingIndex),
+            newItem,
+            ...codeArray.slice(existingIndex + 1),
+          ]
+        : [...codeArray, newItem];
+
     setCodeArray(updatedCodeArray);
+    setFileCollection(updatedFileCollection);
+
     setOpenSnacbar(true);
 
     // Reset form and states
