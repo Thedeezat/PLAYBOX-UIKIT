@@ -14,19 +14,19 @@ export const LanguageOptions = [
   {
     id: 65,
     name: "html",
-    label: "html",
+    label: "Html",
     value: "html",
   },
   {
     id: 66,
     name: "css",
-    label: "css",
+    label: "Css",
     value: "css",
   },
   {
     id: 67,
     name: "scss",
-    label: "scss",
+    label: "Scss",
     value: "scss",
   },
   {
@@ -38,19 +38,19 @@ export const LanguageOptions = [
   {
     id: 69,
     name: "java",
-    label: "java",
+    label: "Java",
     value: "java",
   },
   {
     id: 70,
     name: "php",
-    label: "php",
+    label: "Php",
     value: "php",
   },
   {
     id: 71,
     name: "json",
-    label: "json",
+    label: "Json",
     value: "json",
   },
   {

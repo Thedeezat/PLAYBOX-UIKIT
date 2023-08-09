@@ -18,8 +18,6 @@ export default function Files({
 }: Props) {
   const { codeArray } = useItemContext();
 
-  console.log(codeArray);
-
   const customize = (
     <button className={styles.files__btn}> Customize components </button>
   );

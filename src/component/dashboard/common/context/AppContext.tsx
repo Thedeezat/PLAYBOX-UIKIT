@@ -32,8 +32,6 @@ export default function AppContext({ children }: Props) {
     setCodeArray,
   };
 
-  console.log(codeArray);
-
   return (
     <ValueContext.Provider value={contextValue}>
       {children}

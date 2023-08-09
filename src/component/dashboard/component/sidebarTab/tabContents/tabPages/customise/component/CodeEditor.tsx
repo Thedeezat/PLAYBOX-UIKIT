@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../custom.module.scss";
 import Editor from "@monaco-editor/react";
 import CodePreviewModal from "../../../../../../common/codePreview/CodePreviewModal";
-import { useItemContext } from "../../../../../../common/context/AppContext";
 
 interface CodeEditorProps {
   onChange: (label: string, value: string) => void;
@@ -16,12 +15,43 @@ export default function CustomCodeEditor({
   code,
   theme,
 }: CodeEditorProps) {
+  const [fileContent, setFileContent] = useState<string | null>(null);
   const [value, setValue] = useState(code || "");
   const [modal, setModal] = useState<boolean>(false);
+
+  // Choose file function
+  const handleFileChange = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const file = event.target.files?.[0];
+
+    if (file) {
+      try {
+        const fileReader = new FileReader();
+
+        fileReader.onload = (e) => {
+          const content = e.target?.result as string;
+          console.log("File content:", content); // Debugging output
+          setFileContent(content);
+        };
+
+        fileReader.readAsText(file);
+      } catch (error) {
+        console.error("Error reading the file:", error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (fileContent !== null) {
+      setValue(fileContent);
+    }
+  }, [fileContent]);
 
   const handleModalOpen = () => {
     setModal(true);
   };
+
   const handleEditorChange = (value: string | undefined) => {
     setValue(value || "");
     if (onChange) {
@@ -38,11 +68,18 @@ export default function CustomCodeEditor({
         </div>
         {/* action tabs */}
         <div className={styles.action__tabs}>
-          <p
-            className={`${styles.header__tabs} ${styles.header__tabs__choose}`}
-          >
-            Choose File
-          </p>
+          <form>
+            <label className={styles.customfileinput}>
+              Choose File
+              <input
+                type="file"
+                accept=".js, .jsx, .ts, .tsx, .html, .css, .scss, .c, .java, .php, .json, .cpp, .pug, .py"
+                onChange={handleFileChange}
+                style={{ display: "none" }}
+                className={styles.header__tabs__choose}
+              />
+            </label>
+          </form>
           <p
             className={`${styles.header__tabs} ${styles.header__tabs__save}`}
             onClick={handleModalOpen}

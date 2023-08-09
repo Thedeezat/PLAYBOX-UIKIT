@@ -77,7 +77,8 @@ export default function CodePreviewModal({ codeValue, setModal }: modalProps) {
       setSaveCodeFolder(false);
       setCollectionName("");
       setFileName("ar7fght89mx0hji");
-    }, 1000);
+      setModal(false);
+    }, 1300);
   };
 
   return (

@@ -78,12 +78,15 @@ select {
         .header__tabs {
           font-size: 1.3rem;
           padding: 1.5rem;
+          text-transform: capitalize;
           @extend .header__tabs;
         }
       }
 
       .action__tabs {
         display: flex;
+        justify-content: center;
+        align-items: center;
         height: 100%;
 
         .header__tabs {
@@ -98,6 +101,36 @@ select {
 
           &:hover {
             background: rgba($ash-black, 0.1);
+          }
+        }
+        //Chose file
+        form {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 5.5rem;
+
+          .customfileinput {
+            background-color: transparent;
+            border-color: none;
+            color: inherit;
+            padding: 0 1.4rem;
+            border-left: 0.2px solid $dracula;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            height: 100%;
+          }
+
+          .customfileinput:hover {
+            background: rgba($ash-black, 0.1);
+          }
+
+          .header__tabs__choose {
+            // border: none;
+            // font-family: inherit;
+            // background-color: transparent;
           }
         }
       }
