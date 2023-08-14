@@ -364,7 +364,7 @@ a {
   }
 }
 
-//*********** Code Preview ********* //
+//*********** Code Preview *********//
 //**********************************//
 .codePreview-overlay {
   .modal-bg {
@@ -381,13 +381,14 @@ a {
   }
 
   .codePreview-modal {
-    height: 25rem;
     width: 40rem;
+    height: auto;
     left: 2.5rem;
-    padding: 2rem;
-    top: 4rem;
+    padding: 2rem 3rem;
+    top: 1rem;
     border-radius: 0.7rem;
     background-color: $light-ash;
+    transform: scale(1.1);
 
     .codepreview-header {
       display: flex;
@@ -449,11 +450,12 @@ a {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    padding: 10px 0;
     gap: 25px;
 
     input {
       width: 25rem;
-      padding: 1rem 1.5rem;
+      padding: 1.3rem 1.5rem;
       outline: none;
       border: 1px solid rgb($gray, 0.2);
       background-color: rgba($light-black, 0.2);
@@ -477,7 +479,7 @@ a {
       font-family: inherit;
       font-size: 1.4rem;
       width: 8rem;
-      padding: 1rem 0;
+      padding: 1.3rem 0;
       color: $ash;
       border: none;
     }
@@ -573,6 +575,84 @@ a {
     }
     ::placeholder {
       color: rgba($ash, 0.9);
+    }
+  }
+
+  // Style for already added component
+  .component-collection-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding-top: 20px;
+    gap: 10px;
+    width: 40rem;
+
+    .component-collection {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-left: 1.5rem;
+      cursor: pointer;
+      transition: color 0.2s ease;
+
+      .folderBox {
+        color: rgba($gray, 1);
+      }
+      p {
+        font-size: 1.7rem;
+      }
+      &:hover {
+        p {
+          color: rgba($light-purple, 1);
+        }
+      }
+    }
+    &__bottomText {
+      @include flex(space-between);
+      transition: all 0.2s ease;
+      width: 100%;
+
+      p {
+        cursor: pointer;
+        font-size: 16px;
+
+        &:hover {
+          color: rgba($light-purple, 0.9);
+        }
+      }
+      button {
+        outline: none;
+        background-color: rgba($light-purple, 1);
+        border-radius: 0.8rem;
+        font-family: inherit;
+        font-size: 1.4rem;
+        width: 10rem;
+        padding: 1rem 0;
+        color: $ash;
+        border: none;
+        opacity: 0.7;
+      }
+      .saveButton-active {
+        opacity: 1;
+        cursor: pointer;
+      }
+    }
+    .foler-ticked {
+      background-color: $light-purple;
+      border-radius: 0.3rem;
+      padding: 0.3rem 0.8rem;
+      margin: 0.7rem 0;
+      display: none;
+    }
+    .active-folder {
+      .folderBox {
+        display: none;
+      }
+      .foler-ticked {
+        display: flex !important;
+      }
     }
   }
 }

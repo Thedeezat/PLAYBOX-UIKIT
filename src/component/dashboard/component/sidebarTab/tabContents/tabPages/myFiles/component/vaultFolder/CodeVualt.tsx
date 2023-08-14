@@ -5,12 +5,22 @@ import { useItemContext } from "../../../../../../../common/context/AppContext";
 
 export default function CodeVualt() {
   const { codeArray } = useItemContext();
+  const [openFolder, setOpenFolder] = useState(false);
+
+  const handleCollectionOpen = () => {
+    console.log("heyy");
+    setOpenFolder(true);
+  };
 
   return (
     <div className={styles.folder_section}>
       {codeArray &&
         codeArray.map((component, index) => (
-          <div className={styles.folderComponent} key={index}>
+          <div
+            className={styles.folderComponent}
+            key={index}
+            onClick={handleCollectionOpen}
+          >
             {/* Folder */}
             <FolderIcon
               className={styles.folderIcon}

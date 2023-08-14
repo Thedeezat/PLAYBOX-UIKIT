@@ -4,6 +4,8 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import SnackbarComponent from "../SnackbarPopup";
 import { useItemContext } from "../context/AppContext";
+import FolderIcon from "@mui/icons-material/Folder";
+import DoneIcon from "@mui/icons-material/Done";
 
 interface modalProps {
   modal: boolean;
@@ -17,11 +19,16 @@ export default function CodePreviewModal({ codeValue, setModal }: modalProps) {
   const handleClose = () => {
     setModal(false);
   };
+
   const [collectionName, setCollectionName] = useState("");
   const [saveCodeFolder, setSaveCodeFolder] = useState(false);
   const [fileName, setFileName] = useState("ar7fght89mx0hji");
   const [fileCollection, setFileCollection] = useState<string[]>([fileName]);
   const [openSnackbar, setOpenSnacbar] = useState(false);
+  const [pickFolder, setPickFolder] = useState(false);
+  const [createNewFolder, setCreateNewFolder] = useState(true);
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const [clickedCollectionName, setClickedCollectionName] = useState("");
 
   const handleInputChange = (e: any) => {
     setCollectionName(e.target.value);
@@ -81,6 +88,31 @@ export default function CodePreviewModal({ codeValue, setModal }: modalProps) {
     }, 1300);
   };
 
+  // Triggered when a collection name is clicked
+  const handlePickFolder = (index: number, collectionName: string) => {
+    setActiveIndex((prevIndex) => (prevIndex === index ? -1 : index));
+    setClickedCollectionName(collectionName);
+
+    if (activeIndex === index) {
+      setPickFolder(false);
+    } else {
+      setPickFolder(true);
+    }
+  };
+
+  // Create new collection
+  const handleNewFolder = () => {
+    setCreateNewFolder(false);
+  };
+
+  // Save New file in existing component
+  const handleExistingFolder = () => {
+    if (pickFolder) {
+      setSaveCodeFolder(true);
+      setCollectionName(clickedCollectionName);
+    }
+  };
+
   return (
     <div className="modal-overlay codePreview-overlay">
       <div className="modal-bg" onClick={handleClose}></div>
@@ -134,42 +166,99 @@ export default function CodePreviewModal({ codeValue, setModal }: modalProps) {
                 </button>
               </div>
             </form>
-            <SnackbarComponent
-              openSnackbar={openSnackbar}
-              setOpenSnackbar={setOpenSnacbar}
-              snackbarMessage="Code Saved 🥳"
-            />
           </div>
         ) : (
           <>
             {/* Create folder */}
             <div>
-              <div className="codepreview__intro">
-                <h3>Start your collection</h3>
-                <p>Use collections to save components for use</p>
-              </div>
-              <div className="divider"></div>
-              <form className="form" onSubmit={handleForm}>
-                <input
-                  type="text"
-                  value={collectionName}
-                  onChange={handleInputChange}
-                  className={`${isCollectionNameEmpty ? "" : "input-active"}`}
-                  placeholder="Collection Name"
-                  required
-                />
-                <button
-                  type="submit"
-                  className={`${isCollectionNameEmpty ? "" : "buttoon-active"}`}
-                >
-                  Create
-                </button>
-              </form>
+              {codeArray.length > 0 && createNewFolder ? (
+                <>
+                  <div className="component-collection-container">
+                    {codeArray.map((component, index) => (
+                      <div
+                        key={index}
+                        onClick={() =>
+                          handlePickFolder(index, component.collectionName)
+                        }
+                        className={`component-collection ${
+                          activeIndex === index && "active-folder"
+                        }`}
+                      >
+                        <FolderIcon
+                          sx={{
+                            width: "40px",
+                            height: "40px",
+                          }}
+                          className="folderBox "
+                        />
+                        <div className="foler-ticked">
+                          <DoneIcon
+                            sx={{
+                              width: "20px",
+                              height: "20px",
+                            }}
+                            className="folder-ticked__icon"
+                          />
+                        </div>
+                        <p>{component.collectionName}</p>
+                      </div>
+                    ))}
+                    <div className="divider"></div>
+                    {/* New collection */}
+                    <div className="component-collection-container__bottomText ">
+                      <p onClick={() => handleNewFolder()}>
+                        {" "}
+                        + Create new collection
+                      </p>
+                      <button
+                        onClick={handleExistingFolder}
+                        className={`${pickFolder && "saveButton-active"}`}
+                      >
+                        Save
+                      </button>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="codepreview__intro">
+                    <h3>Start your collection</h3>
+                    <p>Use collections to save components for use</p>
+                  </div>
+                  <div className="divider"></div>
+                  <form className="form" onSubmit={handleForm}>
+                    <input
+                      type="text"
+                      value={collectionName}
+                      onChange={handleInputChange}
+                      className={`${
+                        isCollectionNameEmpty ? "" : "input-active"
+                      }`}
+                      placeholder="Collection Name"
+                      required
+                    />
+                    <button
+                      type="submit"
+                      className={`${
+                        isCollectionNameEmpty ? "" : "buttoon-active"
+                      }`}
+                    >
+                      Create
+                    </button>
+                  </form>
+                </>
+              )}
             </div>
             {/* End of create folder */}
           </>
         )}
       </div>
+
+      <SnackbarComponent
+        openSnackbar={openSnackbar}
+        setOpenSnackbar={setOpenSnacbar}
+        snackbarMessage="Code Saved 🥳"
+      />
     </div>
   );
 }
