@@ -95,4 +95,97 @@
       border-color: rgba($light-purple, 0.3);
     }
   }
+  //**************** openFolder **********//
+  //*************************************//
+  .openFolder {
+    @include flex();
+    align-items: flex-start;
+    width: 100%;
+    gap: 5rem;
+    position: relative;
+
+    &__arrowback {
+      position: absolute;
+      top: -3rem;
+
+      &__icon {
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+          color: rgba($purple, 1);
+        }
+      }
+    }
+    &__sidebar {
+      @include flex();
+      align-items: flex-start;
+      justify-content: flex-start;
+      width: 17rem;
+      padding-right: 20px;
+      margin-top: 40px;
+      gap: 1rem;
+      height: 62vh;
+      border-right: 1px solid rgba($gray, 0.5);
+      flex-direction: column;
+
+      .folderIcon {
+        margin-right: 1.5rem;
+        color: rgba($ash, 0.6);
+      }
+      .folderIcon_arrow {
+        color: rgba($ash, 0.5);
+      }
+      p {
+        font-size: 1.6rem;
+      }
+      &__inner {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        cursor: pointer;
+        width: 100%;
+        border-radius: 0.5rem;
+        padding: 0.3rem 0;
+
+        &:hover {
+          background-color: rgba($ash, 0.1);
+        }
+      }
+    }
+    // Open code folder
+    .showFolderCode {
+      width: 70rem;
+      margin-top: 40px;
+      height: 50rem;
+      background-color: rgba($light-black, 0.3);
+      border-radius: 1rem;
+      border: 1px solid rgba($ash, 0.2);
+      overflow-y: scroll;
+
+      &__header {
+        border-bottom: 1px solid rgba($ash, 0.2);
+        width: 100%;
+
+        .showFolderCode__texts {
+          padding: 1.5rem 2rem;
+          justify-content: space-between;
+          align-items: center;
+          display: flex;
+        }
+        .showFolderCode__actions {
+          @include flex();
+          gap: 1.5rem;
+
+          p {
+            background-color: rgba($ash, 0.1);
+            @include flex();
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
 }

@@ -56,7 +56,7 @@ export default function CodePreviewModal({ codeValue, setModal }: modalProps) {
 
     const updatedFileCollection =
       existingIndex !== -1
-        ? Array.from(new Set([...fileCollection, fileName]))
+        ? codeArray[existingIndex].fileNames.concat(fileName)
         : [fileName];
 
     const newItem = {
