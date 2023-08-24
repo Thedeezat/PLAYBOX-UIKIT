@@ -4,14 +4,24 @@ import FolderIcon from "@mui/icons-material/Folder";
 import { useItemContext } from "../../../../../../../common/context/AppContext";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
+import FolderOpenIcon from "@mui/icons-material/FolderOpen";
+
+interface ComponentType {
+  collectionName: string;
+  fileNames: string[];
+  codeValue: string;
+}
 
 export default function CodeVualt() {
   const { codeArray } = useItemContext();
   const [openFolder, setOpenFolder] = useState(false);
+  const [openedCodeArray, setOpenedCodeArray] = useState<ComponentType>();
+  const [toggleDropdown, setToggleDropdown] = useState(true);
 
-  const handleCollectionOpen = () => {
-    console.log("heyy");
+  const handleCollectionOpen = (pickedItem: ComponentType) => {
     setOpenFolder(true);
+    setOpenedCodeArray(pickedItem);
+    console.log(pickedItem);
   };
 
   return (
@@ -30,28 +40,55 @@ export default function CodeVualt() {
                 }}
               />
             </div>
-            {/* 1 */}
-            <div className={styles.openFolder__sidebar__inner}>
-              <ArrowRightIcon
-                fontSize="large"
-                sx={{
-                  width: "25px",
-                  height: "25px",
-                }}
-                className={styles.folderIcon_arrow}
-              />
-              <FolderIcon
-                fontSize="medium"
-                className={styles.folderIcon}
-                sx={{
-                  width: "21px",
-                  height: "21px",
-                }}
-              />
-              <p>Apine</p>
+            <div
+              className={`${styles.openFolder__sidebarRight_container} ${
+                !toggleDropdown && styles.openFolder_active
+              }`}
+            >
+              <div
+                className={styles.openFolder__sidebarRight}
+                onClick={() => setToggleDropdown(!toggleDropdown)}
+              >
+                <ArrowRightIcon
+                  fontSize="large"
+                  sx={{
+                    width: "25px",
+                    height: "25px",
+                  }}
+                  className={`${styles.folderIcon_arrow}`}
+                />
+                <FolderIcon
+                  fontSize="medium"
+                  className={styles.folderIcon}
+                  sx={{
+                    width: "24px",
+                    height: "24px",
+                  }}
+                />
+                {openedCodeArray && (
+                  <div>
+                    <p>{openedCodeArray.collectionName}</p>
+                  </div>
+                )}
+              </div>
             </div>
+            {/* Dropdown */}
+            {toggleDropdown && (
+              <div className={styles.dropdown_texts}>
+                {openedCodeArray && (
+                  <>
+                    {openedCodeArray.fileNames.map((item, index) => (
+                      <div className={styles.dropdown_texts_fileNames}>
+                        <FolderOpenIcon fontSize="large" />
+                        <p key={index}>{item}</p>
+                      </div>
+                    ))}
+                  </>
+                )}
+              </div>
+            )}
+            {/* Dropdown ends */}
           </div>
-          {/* Show folder code */}
           <div className={styles.showFolderCode}>
             <div className={styles.showFolderCode__header}>
               <div className={styles.showFolderCode__texts}>
@@ -63,7 +100,6 @@ export default function CodeVualt() {
                 </div>
               </div>
             </div>
-
             <div className={styles.showFolderCode__editor}></div>
           </div>
         </section>
@@ -75,7 +111,7 @@ export default function CodeVualt() {
                 <div
                   className={styles.folderComponent}
                   key={index}
-                  onClick={handleCollectionOpen}
+                  onClick={() => handleCollectionOpen(component)}
                 >
                   {/* Folder */}
                   <FolderIcon

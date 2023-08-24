@@ -95,13 +95,14 @@
       border-color: rgba($light-purple, 0.3);
     }
   }
-  //**************** openFolder **********//
-  //*************************************//
+
+  //**************** OpenFolder ********************//
+  //************************************************//
   .openFolder {
     @include flex();
     align-items: flex-start;
     width: 100%;
-    gap: 5rem;
+    gap: 3rem;
     position: relative;
 
     &__arrowback {
@@ -121,25 +122,29 @@
       @include flex();
       align-items: flex-start;
       justify-content: flex-start;
-      width: 17rem;
+      width: 25rem;
       padding-right: 20px;
       margin-top: 40px;
-      gap: 1rem;
       height: 62vh;
       border-right: 1px solid rgba($gray, 0.5);
       flex-direction: column;
 
       .folderIcon {
-        margin-right: 1.5rem;
+        margin-right: 0.8rem;
         color: rgba($ash, 0.6);
       }
       .folderIcon_arrow {
+        margin-right: 0.7rem;
+
         color: rgba($ash, 0.5);
       }
       p {
         font-size: 1.6rem;
       }
-      &__inner {
+      .openFolder__sidebarRight_container {
+        width: 100%;
+      }
+      .openFolder__sidebarRight {
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -147,9 +152,41 @@
         width: 100%;
         border-radius: 0.5rem;
         padding: 0.3rem 0;
+        transition: all 0.3s ease;
+        background-color: rgba($ash, 0.02);
 
         &:hover {
-          background-color: rgba($ash, 0.1);
+          background-color: rgba($ash, 0.02);
+        }
+        .folderIcon_arrow {
+          transform: rotate(90deg);
+        }
+      }
+    }
+    // Dropdown
+    .openFolder_active {
+      .folderIcon_arrow {
+        transform: rotate(0deg);
+      }
+      .openFolder__sidebarRight {
+        background-color: transparent;
+      }
+    }
+    .dropdown_texts {
+      padding-left: 4rem;
+      @include flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.3rem;
+      padding-top: 18px;
+
+      .dropdown_texts_fileNames {
+        @include flex;
+        gap: 0.8rem;
+        cursor: pointer;
+
+        p {
+          font-size: 1.4rem;
         }
       }
     }
