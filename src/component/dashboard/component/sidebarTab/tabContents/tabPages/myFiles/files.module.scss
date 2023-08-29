@@ -1,6 +1,10 @@
 @import "../../../../../../../asset/sass/global.scss";
 
 //*********** files ************/
+.tooltip_text {
+  font-size: 1.1rem;
+  font-family: inherit;
+}
 .files {
   @include flex(center, column);
   height: 60vh;
@@ -135,7 +139,6 @@
       }
       .folderIcon_arrow {
         margin-right: 0.7rem;
-
         color: rgba($ash, 0.5);
       }
       p {
@@ -153,17 +156,17 @@
         border-radius: 0.5rem;
         padding: 0.3rem 0;
         transition: all 0.3s ease;
-        background-color: rgba($ash, 0.02);
+        background-color: rgba($ash, 0.05);
 
         &:hover {
-          background-color: rgba($ash, 0.02);
+          background-color: rgba($ash, 0.05);
         }
         .folderIcon_arrow {
           transform: rotate(90deg);
         }
       }
     }
-    // Dropdown
+    //****** Dropdown ****/
     .openFolder_active {
       .folderIcon_arrow {
         transform: rotate(0deg);
@@ -173,7 +176,7 @@
       }
     }
     .dropdown_texts {
-      padding-left: 4rem;
+      padding-left: 2.5rem;
       @include flex;
       flex-direction: column;
       align-items: flex-start;
@@ -182,27 +185,33 @@
 
       .dropdown_texts_fileNames {
         @include flex;
+        justify-content: flex-start;
+        width: 20rem;
         gap: 0.8rem;
         cursor: pointer;
+        padding: 0.3rem 1.3rem;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease;
+
+        &:hover,
+        &_active {
+          background-color: rgba($ash, 0.05);
+        }
 
         p {
           font-size: 1.4rem;
         }
       }
     }
-    // Open code folder
+    //******* Open code folder *******//
     .showFolderCode {
-      width: 70rem;
-      margin-top: 40px;
-      height: 50rem;
-      background-color: rgba($light-black, 0.3);
-      border-radius: 1rem;
-      border: 1px solid rgba($ash, 0.2);
-      overflow-y: scroll;
-
       &__header {
-        border-bottom: 1px solid rgba($ash, 0.2);
-        width: 100%;
+        width: 70rem;
+        margin-top: 40px;
+        background-color: rgba($light-black, 0.3);
+        border-radius: 1rem;
+        border: 1px solid rgba($ash, 0.2);
+        overflow-y: scroll;
 
         .showFolderCode__texts {
           padding: 1.5rem 2rem;
@@ -212,17 +221,57 @@
         }
         .showFolderCode__actions {
           @include flex();
-          gap: 1.5rem;
+          background-color: $light-ash;
+          border-radius: 0.5rem;
+          border: 0.4px solid rgba($ash, 0.3);
 
-          p {
-            background-color: rgba($ash, 0.1);
-            @include flex();
-            padding: 1rem 2rem;
-            border-radius: 0.5rem;
+          .copyIcon {
+            border-right: 1px solid rgba($ash, 0.2);
             cursor: pointer;
+            padding: 1rem 1.2rem;
+            transition: all 0.3s ease-in;
+            border-radius: 0.5rem;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+
+            &:nth-child(2),
+            &:nth-child(3) {
+              border-top-left-radius: 0 !important;
+              border-bottom-left-radius: 0 !important;
+            }
+            &:nth-child(3) {
+              border: none;
+            }
+
+            &:hover {
+              background-color: rgba($ash, 0.05);
+            }
           }
+        }
+      }
+      &__editor {
+        &__value {
+          width: 66rem;
+          font-family: inherit;
+          height: 40rem;
+          background-color: rgba($light-black, 0.3);
+          border: none;
+          border-radius: 1rem;
+          border-bottom: 1px solid rgba($ash, 0.2);
+          border-left: 1px solid rgba($ash, 0.2);
+          border-right: 1px solid rgba($ash, 0.2);
+          outline: none;
+          color: white;
+          padding: 1.8rem 2rem;
+          font-size: 1.4rem;
+          line-height: 180%;
+          overflow-x: hidden;
+          overflow-y: scroll;
         }
       }
     }
   }
+}
+.lineNumber {
+  opacity: 0.5;
 }

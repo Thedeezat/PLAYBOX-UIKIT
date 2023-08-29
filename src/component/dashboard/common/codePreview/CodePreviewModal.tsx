@@ -23,7 +23,6 @@ export default function CodePreviewModal({ codeValue, setModal }: modalProps) {
   const [collectionName, setCollectionName] = useState("");
   const [saveCodeFolder, setSaveCodeFolder] = useState(false);
   const [fileName, setFileName] = useState("ar7fght89mx0hji");
-  const [fileCollection, setFileCollection] = useState<string[]>([fileName]);
   const [openSnackbar, setOpenSnacbar] = useState(false);
   const [pickFolder, setPickFolder] = useState(false);
   const [createNewFolder, setCreateNewFolder] = useState(true);
@@ -56,13 +55,12 @@ export default function CodePreviewModal({ codeValue, setModal }: modalProps) {
 
     const updatedFileCollection =
       existingIndex !== -1
-        ? codeArray[existingIndex].fileNames.concat(fileName)
-        : [fileName];
+        ? codeArray[existingIndex].files.concat([[fileName, codeValue]])
+        : [[fileName, codeValue]];
 
     const newItem = {
       collectionName: collectionName,
-      fileNames: updatedFileCollection,
-      codeValue: codeValue,
+      files: updatedFileCollection,
     };
 
     const updatedCodeArray =
@@ -75,8 +73,6 @@ export default function CodePreviewModal({ codeValue, setModal }: modalProps) {
         : [...codeArray, newItem];
 
     setCodeArray(updatedCodeArray);
-    setFileCollection(updatedFileCollection);
-
     setOpenSnacbar(true);
 
     // Reset form and states

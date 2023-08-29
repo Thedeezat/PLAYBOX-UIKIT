@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../files.module.scss";
 import FolderIcon from "@mui/icons-material/Folder";
 import { useItemContext } from "../../../../../../../common/context/AppContext";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import FolderOpenIcon from "@mui/icons-material/FolderOpen";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import UpdateIcon from "@mui/icons-material/Update";
+import DeleteIcon from "@mui/icons-material/Delete";
+import Tooltip from "@mui/material/Tooltip";
+import SnackbarComponent from "../../../../../../../common/SnackbarPopup";
 
 interface ComponentType {
   collectionName: string;
-  fileNames: string[];
-  codeValue: string;
+  files: string[];
 }
 
 export default function CodeVualt() {
@@ -17,11 +21,48 @@ export default function CodeVualt() {
   const [openFolder, setOpenFolder] = useState(false);
   const [openedCodeArray, setOpenedCodeArray] = useState<ComponentType>();
   const [toggleDropdown, setToggleDropdown] = useState(true);
+  const [openedFile, setOpenedFile] = useState("");
+  const [isFileOpened, setIsFileOpened] = useState<boolean>(false);
+  const [openCopySnackbar, setOpenCopySnackbar] = useState(false);
+  const [openDeleteSnackbar, setOpenDeleteSnackbar] = useState(false);
 
   const handleCollectionOpen = (pickedItem: ComponentType) => {
     setOpenFolder(true);
     setOpenedCodeArray(pickedItem);
-    console.log(pickedItem);
+  };
+  const handleArrowBack = () => {
+    setOpenFolder(false);
+    setOpenedFile("");
+  };
+
+  const handleClickFile = (value: string) => {
+    setOpenedFile(value);
+    setIsFileOpened(!isFileOpened);
+  };
+
+  // Function that adds new line and space to code snippet
+  function formatFileContent(content: string) {
+    const lines = content.split("\n");
+    return lines.map((line, index) => (
+      <div key={index} className={styles.codeLine}>
+        <span className={styles.lineNumber}>{index + 1}</span>
+        <span className={styles.codeText} style={{ paddingLeft: "15px" }}>
+          {line}
+        </span>
+      </div>
+    ));
+  }
+
+  // File Functions
+  const tooptipText = (text: string) => (
+    <span className={styles.tooltip_text}>{text}</span>
+  );
+
+  const handleCopyFile = () => {
+    setOpenCopySnackbar(true);
+  };
+  const handleDeleteFile = () => {
+    setOpenDeleteSnackbar(true);
   };
 
   return (
@@ -33,13 +74,14 @@ export default function CodeVualt() {
             <div className={styles.openFolder__arrowback}>
               <ArrowBackOutlinedIcon
                 className={styles.openFolder__arrowback__icon}
-                onClick={() => setOpenFolder(false)}
+                onClick={handleArrowBack}
                 sx={{
                   width: "30px",
                   height: "30px",
                 }}
               />
             </div>
+            {/* Folders Name */}
             <div
               className={`${styles.openFolder__sidebarRight_container} ${
                 !toggleDropdown && styles.openFolder_active
@@ -72,35 +114,82 @@ export default function CodeVualt() {
                 )}
               </div>
             </div>
-            {/* Dropdown */}
+            {/* Dropdown Sidebar*/}
             {toggleDropdown && (
               <div className={styles.dropdown_texts}>
                 {openedCodeArray && (
                   <>
-                    {openedCodeArray.fileNames.map((item, index) => (
-                      <div className={styles.dropdown_texts_fileNames}>
+                    {openedCodeArray.files.map((item, index) => (
+                      <div
+                        key={index}
+                        onClick={() => handleClickFile(item)}
+                        className={`${styles.dropdown_texts_fileNames} ${
+                          openedFile === item &&
+                          styles.dropdown_texts_fileNames_active
+                        }`}
+                      >
                         <FolderOpenIcon fontSize="large" />
-                        <p key={index}>{item}</p>
+                        <p>{item[0]}</p>
                       </div>
                     ))}
                   </>
                 )}
               </div>
             )}
-            {/* Dropdown ends */}
+            {/* Dropdown sidebar ends */}
           </div>
+          {/* Code File Display */}
           <div className={styles.showFolderCode}>
             <div className={styles.showFolderCode__header}>
               <div className={styles.showFolderCode__texts}>
-                <p>App.txt</p>
-
-                <div className={styles.showFolderCode__actions}>
-                  <p>Copy</p>
-                  <p>Edit</p>
-                </div>
+                <p>Code</p>
+                {openedFile && (
+                  <div className={styles.showFolderCode__actions}>
+                    <Tooltip title={tooptipText("Copy")}>
+                      <ContentCopyIcon
+                        className={styles.copyIcon}
+                        onClick={handleCopyFile}
+                        fontSize="large"
+                        sx={{
+                          width: "18px",
+                          height: "18px",
+                        }}
+                      />
+                    </Tooltip>
+                    <Tooltip title={tooptipText("Update")}>
+                      <UpdateIcon
+                        className={styles.copyIcon}
+                        fontSize="large"
+                        sx={{
+                          width: "18px",
+                          height: "18px",
+                        }}
+                      />
+                    </Tooltip>
+                    <Tooltip title={tooptipText("Delete")}>
+                      <DeleteIcon
+                        className={styles.copyIcon}
+                        onClick={handleDeleteFile}
+                        fontSize="large"
+                        sx={{
+                          width: "18px",
+                          height: "18px",
+                        }}
+                      />
+                    </Tooltip>
+                  </div>
+                )}
               </div>
             </div>
-            <div className={styles.showFolderCode__editor}></div>
+            <div className={styles.showFolderCode__editor}>
+              <div className={`${styles.showFolderCode__editor__value}`}>
+                {openedFile ? (
+                  formatFileContent(openedFile[1])
+                ) : (
+                  <span>Click a file to display code snippet </span>
+                )}
+              </div>
+            </div>
           </div>
         </section>
       ) : (
@@ -126,7 +215,7 @@ export default function CodeVualt() {
                     <p>{component.collectionName}</p>
                     <p className={styles.fileNumber}>
                       {" "}
-                      {component.fileNames.length} Files
+                      {component.files.length} Files
                     </p>
                   </div>
                 </div>
@@ -134,6 +223,16 @@ export default function CodeVualt() {
             ))}
         </>
       )}
+      <SnackbarComponent
+        setOpenSnackbar={setOpenCopySnackbar}
+        openSnackbar={openCopySnackbar}
+        snackbarMessage="Code Snippet Copied"
+      />
+      <SnackbarComponent
+        setOpenSnackbar={setOpenDeleteSnackbar}
+        openSnackbar={openDeleteSnackbar}
+        snackbarMessage="Code Snippet Deleted"
+      />
     </div>
   );
 }
