@@ -68,7 +68,6 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 18rem;
     gap: 2.5rem;
 
     .folderIcon {
@@ -81,11 +80,11 @@
       margin-top: 0.8rem;
 
       p {
-        padding-left: 0.8rem;
+        padding-left: 0.1rem;
         color: #dbd4d4;
         text-transform: capitalize;
         font-weight: 600;
-        font-size: 1.6rem;
+        font-size: 1.5rem;
       }
       .fileNumber {
         font-size: 1.4rem;
