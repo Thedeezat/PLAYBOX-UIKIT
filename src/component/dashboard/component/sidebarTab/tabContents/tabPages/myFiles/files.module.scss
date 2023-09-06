@@ -128,7 +128,7 @@
       width: 25rem;
       padding-right: 20px;
       margin-top: 40px;
-      height: 62vh;
+      height: 70vh;
       border-right: 1px solid rgba($gray, 0.5);
       flex-direction: column;
 
@@ -204,9 +204,13 @@
     }
     //******* Open code folder *******//
     .showFolderCode {
+      .editFile {
+        position: relative;
+        top: 4.5rem;
+      }
       &__header {
         width: 70rem;
-        margin-top: 40px;
+        margin-top: 80px;
         background-color: rgba($light-black, 0.3);
         border-radius: 1rem;
         border: 1px solid rgba($ash, 0.2);

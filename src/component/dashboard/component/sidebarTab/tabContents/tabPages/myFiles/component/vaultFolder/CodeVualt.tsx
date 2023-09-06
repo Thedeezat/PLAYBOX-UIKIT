@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "../../files.module.scss";
 import FolderIcon from "@mui/icons-material/Folder";
 import { useItemContext } from "../../../../../../../common/context/AppContext";
@@ -6,10 +6,11 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import ArrowBackOutlinedIcon from "@mui/icons-material/ArrowBackOutlined";
 import FolderOpenIcon from "@mui/icons-material/FolderOpen";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import UpdateIcon from "@mui/icons-material/Update";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Tooltip from "@mui/material/Tooltip";
 import SnackbarComponent from "../../../../../../../common/SnackbarPopup";
+import EditIcon from "@mui/icons-material/Edit";
+import EditFile from "./editFile/EditFile";
 
 interface ComponentType {
   collectionName: string;
@@ -58,8 +59,18 @@ export default function CodeVualt() {
     <span className={styles.tooltip_text}>{text}</span>
   );
 
+  // Copy file
   const handleCopyFile = () => {
-    setOpenCopySnackbar(true);
+    if (navigator.clipboard) {
+      navigator.clipboard
+        .writeText(openedFile[1])
+        .then(() => {
+          setOpenCopySnackbar(true);
+        })
+        .catch((error) => {
+          console.error("Failed to copy text: ", error);
+        });
+    }
   };
   const handleDeleteFile = () => {
     setOpenDeleteSnackbar(true);
@@ -140,6 +151,8 @@ export default function CodeVualt() {
           </div>
           {/* Code File Display */}
           <div className={styles.showFolderCode}>
+            <EditFile />
+
             <div className={styles.showFolderCode__header}>
               <div className={styles.showFolderCode__texts}>
                 <p>Code</p>
@@ -156,8 +169,8 @@ export default function CodeVualt() {
                         }}
                       />
                     </Tooltip>
-                    <Tooltip title={tooptipText("Update")}>
-                      <UpdateIcon
+                    <Tooltip title={tooptipText("Edit")}>
+                      <EditIcon
                         className={styles.copyIcon}
                         fontSize="large"
                         sx={{
@@ -226,12 +239,12 @@ export default function CodeVualt() {
       <SnackbarComponent
         setOpenSnackbar={setOpenCopySnackbar}
         openSnackbar={openCopySnackbar}
-        snackbarMessage="Code Snippet Copied"
+        snackbarMessage="The code snippet has been copied."
       />
       <SnackbarComponent
         setOpenSnackbar={setOpenDeleteSnackbar}
         openSnackbar={openDeleteSnackbar}
-        snackbarMessage="Code Snippet Deleted"
+        snackbarMessage="The code Snippet file has been deleted"
       />
     </div>
   );
