@@ -26,6 +26,7 @@ export default function CodeVualt() {
   const [isFileOpened, setIsFileOpened] = useState<boolean>(false);
   const [openCopySnackbar, setOpenCopySnackbar] = useState(false);
   const [openDeleteSnackbar, setOpenDeleteSnackbar] = useState(false);
+  const [editFile, setEditFile] = useState<boolean>(false);
 
   const handleCollectionOpen = (pickedItem: ComponentType) => {
     setOpenFolder(true);
@@ -34,6 +35,7 @@ export default function CodeVualt() {
   const handleArrowBack = () => {
     setOpenFolder(false);
     setOpenedFile("");
+    setEditFile(false);
   };
 
   const handleClickFile = (value: string) => {
@@ -53,7 +55,6 @@ export default function CodeVualt() {
       </div>
     ));
   }
-
   // File Functions
   const tooptipText = (text: string) => (
     <span className={styles.tooltip_text}>{text}</span>
@@ -72,9 +73,13 @@ export default function CodeVualt() {
         });
     }
   };
+
+  // Delete file
   const handleDeleteFile = () => {
     setOpenDeleteSnackbar(true);
   };
+
+  // Edit file
 
   return (
     <div className={styles.folder_section}>
@@ -151,7 +156,11 @@ export default function CodeVualt() {
           </div>
           {/* Code File Display */}
           <div className={styles.showFolderCode}>
-            <EditFile />
+            <EditFile
+              openedCodeArray={openedCodeArray}
+              openedFile={openedFile}
+              editFile={editFile}
+            />
 
             <div className={styles.showFolderCode__header}>
               <div className={styles.showFolderCode__texts}>
@@ -172,6 +181,7 @@ export default function CodeVualt() {
                     <Tooltip title={tooptipText("Edit")}>
                       <EditIcon
                         className={styles.copyIcon}
+                        onClick={() => setEditFile(true)}
                         fontSize="large"
                         sx={{
                           width: "18px",
