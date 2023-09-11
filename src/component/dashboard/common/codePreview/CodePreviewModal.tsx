@@ -14,7 +14,7 @@ interface modalProps {
 }
 
 export default function CodePreviewModal({ codeValue, setModal }: modalProps) {
-  const { codeArray, setCodeArray } = useItemContext();
+  const { codeArray, setCodeArray, fileName, setFileName } = useItemContext();
 
   const handleClose = () => {
     setModal(false);
@@ -22,7 +22,7 @@ export default function CodePreviewModal({ codeValue, setModal }: modalProps) {
 
   const [collectionName, setCollectionName] = useState("");
   const [saveCodeFolder, setSaveCodeFolder] = useState(false);
-  const [fileName, setFileName] = useState("ar7fght89mx0hji");
+  // const [fileName, setFileName] = useState("ar7fght89mx0hji");
   const [openSnackbar, setOpenSnacbar] = useState(false);
   const [pickFolder, setPickFolder] = useState(false);
   const [createNewFolder, setCreateNewFolder] = useState(true);

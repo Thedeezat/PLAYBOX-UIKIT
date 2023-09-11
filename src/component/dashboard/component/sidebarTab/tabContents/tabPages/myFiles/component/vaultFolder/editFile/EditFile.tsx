@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "../../../files.module.scss";
+import { useItemContext } from "../../../../../../../../common/context/AppContext";
+import SnackbarComponent from "../../../../../../../../common/SnackbarPopup";
+
 interface ComponentType {
   collectionName: string;
   files: string[];
@@ -15,35 +18,50 @@ export default function EditFile({
   openedFile,
   editFile,
 }: ComponentProps) {
-  console.log(openedFile[0]);
-  const [newFileName, setNewFileName] = useState("");
+  const { newFileName, setNewFileName } = useItemContext();
 
-  useEffect(() => {
-    setNewFileName(openedFile[0] || "");
-  }, [openedFile]);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const updatedFileArray = [openedFile];
+  const updatedFileName = [...updatedFileArray];
+  let NewName = updatedFileName[0][0];
 
   const handleRenameFunction = (e: any) => {
     e.preventDefault();
+    setOpenSnackbar(true);
+    NewName = newFileName;
+    setNewFileName(NewName);
   };
-  return (
-    <div className={styles.editFile}>
-      {editFile && (
-        <>
-          <span> {openedCodeArray && openedCodeArray.collectionName} </span>
 
-          {"/ "}
-          <form onSubmit={handleRenameFunction}>
-            <input
-              type="text"
-              placeholder="Rename File Name"
-              value={newFileName}
-              onChange={(e) => setNewFileName(e.target.value)}
-              required
-            />
-            <button type="submit">Update</button>
-          </form>
-        </>
-      )}
-    </div>
+  useEffect(() => {
+    setNewFileName(NewName);
+  }, [NewName]);
+
+  return (
+    <>
+      <div className={styles.editFile}>
+        {editFile && (
+          <>
+            <span> {openedCodeArray && openedCodeArray.collectionName} </span>
+
+            {"/ "}
+            <form onSubmit={handleRenameFunction}>
+              <input
+                type="text"
+                placeholder="Rename File Name"
+                value={newFileName}
+                onChange={(e) => setNewFileName(e.target.value)}
+                required
+              />
+              <button type="submit">Update</button>
+            </form>
+          </>
+        )}
+      </div>
+      <SnackbarComponent
+        setOpenSnackbar={setOpenSnackbar}
+        openSnackbar={openSnackbar}
+        snackbarMessage="The snippet name has been updated"
+      />
+    </>
   );
 }

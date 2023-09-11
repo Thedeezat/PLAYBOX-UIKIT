@@ -31,7 +31,6 @@ export default function CustomCodeEditor({
 
         fileReader.onload = (e) => {
           const content = e.target?.result as string;
-          console.log("File content:", content); // Debugging output
           setFileContent(content);
         };
 

@@ -145,6 +145,7 @@ export default function CodeVualt() {
                         }`}
                       >
                         <FolderOpenIcon fontSize="large" />
+                        {/* <p>{item[0]}</p> */}
                         <p>{item[0]}</p>
                       </div>
                     ))}
@@ -178,7 +179,7 @@ export default function CodeVualt() {
                         }}
                       />
                     </Tooltip>
-                    <Tooltip title={tooptipText("Edit")}>
+                    {/* <Tooltip title={tooptipText("Edit")}>
                       <EditIcon
                         className={styles.copyIcon}
                         onClick={() => setEditFile(true)}
@@ -199,7 +200,7 @@ export default function CodeVualt() {
                           height: "18px",
                         }}
                       />
-                    </Tooltip>
+                    </Tooltip> */}
                   </div>
                 )}
               </div>
@@ -219,37 +220,35 @@ export default function CodeVualt() {
         <>
           {codeArray &&
             codeArray.map((component, index) => (
-              <>
-                <div
-                  className={styles.folderComponent}
-                  key={index}
-                  onClick={() => handleCollectionOpen(component)}
-                >
-                  {/* Folder */}
-                  <FolderIcon
-                    className={styles.folderIcon}
-                    fontSize="large"
-                    sx={{
-                      width: "58px",
-                      height: "58px",
-                    }}
-                  />
-                  <div className={styles.textContainer}>
-                    <p>{component.collectionName}</p>
-                    <p className={styles.fileNumber}>
-                      {" "}
-                      {component.files.length} Files
-                    </p>
-                  </div>
+              <div
+                className={styles.folderComponent}
+                key={index}
+                onClick={() => handleCollectionOpen(component)}
+              >
+                {/* Folder */}
+                <FolderIcon
+                  className={styles.folderIcon}
+                  fontSize="large"
+                  sx={{
+                    width: "58px",
+                    height: "58px",
+                  }}
+                />
+                <div className={styles.textContainer}>
+                  <p>{component.collectionName}</p>
+                  <p className={styles.fileNumber}>
+                    {" "}
+                    {component.files.length} Files
+                  </p>
                 </div>
-              </>
+              </div>
             ))}
         </>
       )}
       <SnackbarComponent
         setOpenSnackbar={setOpenCopySnackbar}
         openSnackbar={openCopySnackbar}
-        snackbarMessage="The code snippet has been copied."
+        snackbarMessage="The code snippet has been copied"
       />
       <SnackbarComponent
         setOpenSnackbar={setOpenDeleteSnackbar}
