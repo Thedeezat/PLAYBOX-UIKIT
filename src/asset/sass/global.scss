@@ -33,6 +33,7 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
 .header {
   position: relative;
   background-size: cover;
@@ -83,7 +84,7 @@ a {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
-  margin-top: 5rem;
+  margin-top: 3rem;
   width: 97%;
 
   .layout_component {
@@ -161,12 +162,12 @@ a {
     top: 0;
     right: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.2);
     width: 100%;
     height: 100%;
     overflow: hidden;
-    backdrop-filter: blur(0.2px);
-    -webkit-backdrop-filter: blur(0.2px);
+    backdrop-filter: blur(0.3px);
+    -webkit-backdrop-filter: blur(0.3px);
   }
 
   .menu-btn {
@@ -203,10 +204,10 @@ a {
     justify-content: flex-start;
     background-color: $light-ash;
     width: 100%;
-    height: 83vh;
-    top: 1rem;
-    left: 1rem;
-    max-width: 80rem;
+    height: 84vh;
+    top: 2rem;
+    left: 4rem;
+    max-width: 85rem;
     border-radius: 2rem;
     overflow: hidden;
 
@@ -224,30 +225,68 @@ a {
         .modal-intro {
           font-size: 2.5rem;
         }
-        .download-code {
-          opacity: 0.7;
-          background-color: $ash-black;
+        .modal-cancel-btn {
           display: flex;
           justify-content: center;
           align-items: center;
-          padding: 1.2rem 1.5rem;
-          border-radius: 0.5rem;
-          color: $white;
-          cursor: pointer;
+          width: 50px;
+          height: 40px;
 
-          .download-icon {
-            margin-left: 0.5rem;
+          .cancel-line {
+            position: relative;
+            height: 2px;
+            width: 2.5rem;
+            display: inline-block;
+            background: gray;
+            border-radius: 1px;
+            transition: all 0.3s ease-in-out;
+            transform: rotate(45deg);
+            cursor: pointer;
+          }
+          .cancel-line:first-child {
+            top: 0.05rem;
+            left: 2.4rem;
+            transform: rotate(-45deg);
           }
         }
       }
     }
     // code preview
-    .code-preview {
-      width: 75%;
-      height: 15rem;
+    .modalPreview {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 4rem;
+      width: 100%;
       border-radius: 1rem;
-      background-color: rgba($light-black, 0.3);
-      margin: 5rem 0;
+      position: relative;
+      margin: 4rem 0 3rem;
+
+      &__code,
+      &__display {
+        background-color: rgba($light-black, 0.33);
+        width: 50%;
+        height: 25rem;
+        padding: 1rem;
+        border-radius: 1.5rem;
+        overflow-y: scroll;
+      }
+      &__code {
+        margin-left: 3rem;
+        color: rgba($white, 0.9);
+      }
+      &__display {
+        margin-right: 3rem;
+      }
+      .previewCode {
+        font-size: 1.4rem;
+        max-width: 70px;
+        line-height: 250%;
+        padding: 10px 15px;
+        font-family: inherit;
+        font-size: 12px;
+        display: flex;
+      }
     }
     //Info
     .modal-info {
@@ -262,7 +301,7 @@ a {
         top: 0;
         left: 0;
         right: 0;
-        background-color: rgba($gray, 0.2);
+        background-color: rgba($gray, 0.15);
         width: 100%;
         height: 0.1rem;
       }
@@ -273,7 +312,7 @@ a {
         width: 100%;
         gap: 3rem;
         padding: 0 2.5rem;
-        margin-top: 2rem;
+        margin-top: 1.5rem;
 
         .modal-info__heading {
           .modal-info__head {
@@ -293,6 +332,8 @@ a {
           @include flex(center);
           flex-direction: column;
           align-items: flex-start;
+          width: 30rem;
+          // background-color: red;
 
           .select-framework_head {
             @include flex(center);
@@ -304,21 +345,23 @@ a {
           &__options {
             margin-top: 2rem;
             @include flex(center);
-            height: 11rem;
+            height: 2rem;
             flex-direction: column;
             align-items: flex-start;
-            // opacity: 0.6;
-            gap: 2.2rem;
+            overflow-y: scroll;
+            gap: 1.8rem;
             color: rgba($white, 0.9);
             background-color: rgba($gray, 0.2);
             width: 100%;
             justify-content: center;
-            border-radius: 0.2rem;
+            border-radius: 0.8rem;
             padding: 1.8rem 0;
+            padding-top: 5rem;
 
             .tooltip-item {
               margin: 0 auto;
               padding-left: 2rem;
+              opacity: 0.8;
               cursor: pointer;
 
               &:hover {
@@ -336,16 +379,16 @@ a {
     .button_container {
       @include flex;
       justify-content: flex-end;
-      margin: 3rem 0;
+      margin: 2rem 0;
       margin-right: 5rem;
       width: 100%;
 
       .generate_button {
         border: none;
         background-color: $light-purple;
-        width: 13rem;
-        padding: 1.2rem 0;
-        border-radius: 1rem;
+        width: 11rem;
+        padding: 1rem 0;
+        border-radius: 0.8rem;
         font-family: inherit;
         color: #f5f5f5;
         font-size: 1.6rem;

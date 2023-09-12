@@ -22,7 +22,6 @@ export default function CodePreviewModal({ codeValue, setModal }: modalProps) {
 
   const [collectionName, setCollectionName] = useState("");
   const [saveCodeFolder, setSaveCodeFolder] = useState(false);
-  // const [fileName, setFileName] = useState("ar7fght89mx0hji");
   const [openSnackbar, setOpenSnacbar] = useState(false);
   const [pickFolder, setPickFolder] = useState(false);
   const [createNewFolder, setCreateNewFolder] = useState(true);

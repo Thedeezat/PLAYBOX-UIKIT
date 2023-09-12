@@ -9,12 +9,14 @@ interface ImageTextObject {
 
 const textLists: ImageTextObject[] = [
   { image: footer, text: "Alert" },
-  { image: footer, text: "Progress" },
-  { image: footer, text: "Skeleton" },
-  { image: footer, text: "Dialog" },
+  { image: footer, text: "Progress Indicators" },
+  { image: footer, text: "Badge Notifications" },
+  { image: footer, text: "Snackbar Notifications" },
   { image: footer, text: "Spinner" },
-  { image: footer, text: "Toast" },
-  { image: footer, text: "Loader" },
+  { image: footer, text: "Toast Notifications" },
+  { image: footer, text: "Geo-location Feedback" },
+  { image: footer, text: "User Feedback Widgets" },
+  { image: footer, text: "Drag-and-Drop" },
 ];
 
 export default function FeedbackPage() {

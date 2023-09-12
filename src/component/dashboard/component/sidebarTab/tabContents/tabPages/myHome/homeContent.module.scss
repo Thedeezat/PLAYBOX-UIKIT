@@ -24,7 +24,7 @@
 
       .homeContent_button {
         outline: none;
-        border: 0.5px solid $light-ash;
+        border: 1px solid $light-ash;
         background-color: rgba($ash, 0.07);
         width: 16rem;
         height: 6.5rem;
@@ -33,11 +33,12 @@
         font-size: 1.4rem;
         color: $white;
         font-weight: 500;
-        cursor: pointer;
+        // cursor: pointer;
         @include flex(center);
+        transition: all 0.3s ease;
 
         &:hover {
-          border-color: $light-purple;
+          border-color: rgba($light-purple, 0.4);
         }
       }
       .createFolder_wrapper {
@@ -62,11 +63,14 @@
       font-size: 1.6rem;
       color: $white;
     }
+    .layout_component_wrapper {
+      margin-top: 0.2rem !important;
+    }
     .layout_wrapper_home {
-      margin-top: 2.5rem;
+      // margin-top: 1rem;
     }
     .customised_example {
-      margin-top: 4rem;
+      margin-top: 5rem;
     }
   }
 }

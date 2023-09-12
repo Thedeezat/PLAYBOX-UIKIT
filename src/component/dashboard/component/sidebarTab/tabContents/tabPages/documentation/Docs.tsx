@@ -22,18 +22,18 @@ export default function Docs() {
         {" "}
         {/* Get started */}
         <div className={styles.get_started}>
-          <h4 className={styles.getStarted_overview}> Playbox - Overview</h4>
+          <h4 className={styles.getStarted_overview}> PLAYBOX - Overview</h4>
 
           <p className={styles.getStarted_text}>
             {" "}
-            Playbox is an open source tool with your favorite frameworks.{" "}
+            PLAYBOX is an open source tool with your favorite frameworks.{" "}
           </p>
 
           {/* Introduction */}
           <h3 className={styles.getStarted_heading}> Introduction </h3>
           <p>
             {" "}
-            Playbox makes it simple to import pre-existing components, customize
+            PLAYBOX makes it simple to import pre-existing components, customize
             them, and save them.{" "}
           </p>
           <p>
@@ -116,13 +116,81 @@ export default function Docs() {
 
           {/* Import File */}
           <div className={styles.import_file}>
-            <h3 className={styles.getStarted_heading}> Import File </h3>
+            <h3
+              className={`${styles.getStarted_heading} ${styles.getStarted_heading__import}`}
+            >
+              {" "}
+              Code Editor and File Management{" "}
+            </h3>
+            <h4 className={styles.getStarted_subheading}>
+              Import and Write Code:
+            </h4>
+            <p>
+              - Import existing code files into the text editor or write new
+              code directly in the editor.
+            </p>
+            <p>- Save your code for easy access and future editing.</p>
+            <h4 className={styles.getStarted_subheading}>Code Vault:</h4>
+            <p>
+              {" "}
+              - Access your saved components and folders in the Code Vault
+              section.
+            </p>
+            <p> - View, copy, and manage your securely stored components.</p>
+            <h4 className={styles.getStarted_subheading}>Folder Management:</h4>
+            <p> - Create and organize multiple files within folders.</p>
+            <p> - Conveniently manage your code structure in one place.</p>
           </div>
 
-          {/* Integration */}
+          {/* Customization */}
           <div className={styles.import_file}>
-            <h3 className={styles.getStarted_heading}> Integration </h3>
+            <h3 className={styles.getStarted_heading}>
+              {" "}
+              Customization and Code Editor Options
+            </h3>
+            <p>
+              {" "}
+              - Access the Code Editor and create files and folders from the
+              "Customize" tab.
+            </p>
+            <p>
+              {" "}
+              -Choose from a variety of themes to personalize your coding
+              environment.
+            </p>{" "}
+            <p>
+              {" "}
+              - Select from 12 different programming languages for coding
+              versatility.
+            </p>
+            <p>
+              {" "}
+              -Benefit from auto-complete and syntax highlighting for efficient
+              coding.
+            </p>
           </div>
+          {/*  Prebuilt */}
+          <div className={styles.import_file}>
+            <h3 className={styles.getStarted_heading}> Prebuilt Components </h3>
+
+            <p>
+              {" "}
+              - Explore a rich library of prebuilt components designed for
+              software developers.
+            </p>
+            <p>
+              {" "}
+              - Access both backend and frontend components to streamline
+              development.
+            </p>
+
+            <p>
+              {" "}
+              - Boost your productivity with readily available building blocks
+              for your projects.
+            </p>
+          </div>
+          {/* End of prebuilt */}
         </div>
       </div>
     </div>

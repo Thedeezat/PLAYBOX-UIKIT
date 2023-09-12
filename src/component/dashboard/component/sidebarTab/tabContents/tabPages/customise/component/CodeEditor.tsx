@@ -53,6 +53,7 @@ export default function CustomCodeEditor({
 
   const handleEditorChange = (value: string | undefined) => {
     setValue(value || "");
+
     if (onChange) {
       onChange("code", value || "");
     }

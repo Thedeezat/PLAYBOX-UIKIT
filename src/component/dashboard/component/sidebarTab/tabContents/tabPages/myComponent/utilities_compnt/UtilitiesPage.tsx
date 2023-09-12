@@ -8,13 +8,16 @@ interface ImageTextObject {
 }
 
 const textLists: ImageTextObject[] = [
-  { image: grid, text: "Modal" },
-  { image: grid, text: "Popover" },
-  { image: grid, text: "Sidebar" },
-  { image: grid, text: "Dropdown" },
-  { image: grid, text: "Tooltip" },
-  { image: grid, text: "Transition" },
+  { image: grid, text: "Caching Mechanisms" },
+  { image: grid, text: "File Handling" },
+  { image: grid, text: "Authentication Utilities" },
+  { image: grid, text: "Encryption Utilities" },
+  { image: grid, text: "Email Handling" },
+  { image: grid, text: "Data Compression" },
+  { image: grid, text: "Dependency Injection" },
+  { image: grid, text: "Utilities Library" },
   { image: grid, text: "Statistics" },
+  { image: grid, text: "Search and Indexing" },
 ];
 
 export default function UtilitiesPage() {

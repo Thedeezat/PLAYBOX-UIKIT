@@ -26,16 +26,16 @@ interface ImageTextObject {
 }
 
 const textLists: ImageTextObject[] = [
-  { image: accordian, text: "Accordion" },
-  { image: nav, text: "Navigation" },
+  { image: accordian, text: "Container Components" },
+  { image: nav, text: "Navigation Bars" },
   { image: sidebar, text: "Sidebar" },
-  { image: links, text: "Links" },
-  { image: texts, text: "Text" },
-  { image: hero, text: "Hero section" },
-  { image: footer, text: "Footer" },
-  { image: container, text: "Container" },
-  { image: image, text: "Image" },
-  { image: grid, text: "Grid" },
+  { image: links, text: "Page Templates" },
+  { image: texts, text: "Fluid Layouts" },
+  { image: hero, text: "Tabbed Interfaces" },
+  { image: footer, text: "Responsive Images" },
+  { image: container, text: "Responsive Typography" },
+  { image: image, text: "Collapsible Panels" },
+  { image: grid, text: "Grid Systems" },
 ];
 
 export default function LayoutPage() {

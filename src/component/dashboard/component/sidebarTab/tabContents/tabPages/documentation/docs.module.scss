@@ -15,11 +15,17 @@
       margin: 2rem 0;
       line-height: 180%;
     }
+
     .getStarted_heading {
-      font-weight: 400;
+      font-weight: 500;
       margin: 2rem 0;
       margin-top: 4rem;
       font-size: 2rem;
+    }
+    .getStarted_subheading {
+      font-weight: 400;
+      font-size: 1.5rem;
+      margin: 2rem 0;
     }
     //framework types
     .framework_types_wrapper {
@@ -79,6 +85,7 @@
       }
       .framework_types__tailwind {
         transform: scale(0.9);
+
         span {
           background-color: #38bcf8;
         }
@@ -87,6 +94,7 @@
         .framework_icon {
           transform: scale(0.75);
         }
+
         span {
           background-color: #7912f1;
         }

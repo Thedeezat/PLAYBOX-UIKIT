@@ -12,6 +12,8 @@ import input from "../../../image/input.png";
 
 import popover from "../../../image/popover.png";
 
+import custom from "../../../image/custom.png";
+
 import ElementContext from "../myComponent/ElementModal";
 
 interface ImageTextObject {
@@ -20,13 +22,20 @@ interface ImageTextObject {
 }
 
 const textLists: ImageTextObject[] = [
-  { image: accordian, text: "Accordion" },
-  { image: menu, text: "Menu" },
-  { image: tabs, text: "Tabs" },
-  { image: input, text: "Input" },
+  { image: accordian, text: "Image Carousels" },
+  { image: menu, text: "Charts and Graphs" },
+  { image: tabs, text: "Search Filters" },
+  { image: input, text: "Map Integration" },
   { image: popover, text: "Popover" },
 ];
 
+const customLists: ImageTextObject[] = [
+  { image: custom, text: "File Upload" },
+  { image: custom, text: "Social Sharing" },
+  { image: custom, text: "Rating and Reviews" },
+  { image: custom, text: "Feedback Forms" },
+  { image: custom, text: "Error Handling" },
+];
 export default function HomeContent() {
   return (
     <section className={styles.HomeContent}>
@@ -70,25 +79,11 @@ export default function HomeContent() {
         </div>
 
         {/* Customised components */}
-        <h3 className={styles.customised_example}>Customised example</h3>
+        <h3 className={styles.customised_example}>Customised Components</h3>
         <div
-          className={`layout_component_wrapper ${styles.layout_wrapper_home}`}
+          className={`layout_component_wrapper ${styles.layout_component_wrapper} ${styles.layout_wrapper_home}`}
         >
-          <div className="layout_component">
-            <span className="layout_component__text">Accordian</span>
-          </div>
-          <div className="layout_component">
-            <span className="layout_component__text">Accordian</span>
-          </div>
-          <div className="layout_component">
-            <span className="layout_component__text">Accordian</span>
-          </div>
-          <div className="layout_component">
-            <span className="layout_component__text">Accordian</span>
-          </div>
-          <div className="layout_component">
-            <span className="layout_component__text">Accordian</span>
-          </div>
+          <ElementContext imageTextArray={customLists} />
         </div>
       </div>
     </section>

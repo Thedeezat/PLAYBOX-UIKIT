@@ -12,8 +12,10 @@ const textLists: ImageTextObject[] = [
   { image: image, text: "Lists" },
   { image: image, text: "Divider" },
   { image: image, text: "Typography" },
-  { image: image, text: "Icons" },
-  { image: image, text: "Tooltip" },
+  { image: image, text: "Tables" },
+  { image: image, text: "Data Grids" },
+  { image: image, text: "Data Comparisons" },
+  { image: image, text: "Charts and Graphs" },
 ];
 
 export default function DataDisplay() {

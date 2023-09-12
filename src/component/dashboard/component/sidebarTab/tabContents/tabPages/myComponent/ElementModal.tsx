@@ -1,11 +1,10 @@
 import { useState } from "react";
 
-import DownloadIcon from "@mui/icons-material/Download";
-
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 import Modaltooltip from "../../../../../common/Modaltooltip";
 
+import SnackbarComponent from "../../../../../common/SnackbarPopup";
 interface ImageTextObject {
   image: string;
   text: string;
@@ -28,6 +27,8 @@ export default function ElementModal({
   imageTextArray,
 }: ElementContextProps): JSX.Element {
   const [modal, setModal] = useState<boolean>(false);
+  const [openSnackbar, setOpenSnacbar] = useState(false);
+
   const [activeComponent, setActiveComponent] =
     useState<ImageTextObject | null>(null);
 
@@ -42,11 +43,26 @@ export default function ElementModal({
     { label: "Tailwind", value: "Tailwind" },
     { label: "SCSS", value: "SCSS" },
   ];
+  const sourceCode = (
+    <span>
+      {`
+      function generateRandomNumber(min, max) {${(<br />)}
+        const randomArray = [];${(<br />)}
+        const arrayLength = generateRandomNumber(5, 10);${(<br />)}
+        for (let i = 0; i < arrayLength; i++) {${(<br />)}
+          randomArray.push(generateRandomNumber(1, 100));${(<br />)}
+        }${(<br />)}
+        console.log("Random Array:", randomArray);${(<br />)}
+      }${(<br />)}
+    `}
+    </span>
+  );
 
   // Modal
   const handleClick = (element: ImageTextObject) => {
-    setModal(true);
-    setActiveComponent(element);
+    // setModal(true);
+    // setActiveComponent(element);
+    setOpenSnacbar(true);
   };
   const handleClose = () => {
     setModal(false);
@@ -73,29 +89,26 @@ export default function ElementModal({
               <>
                 <div className="modal-overlay">
                   <div className="modal-bg" onClick={handleClose}></div>
-                  {/* Close */}
-                  {/* <div className="menu-btn" onClick={handleClose}>
-                    <span className="line"></span>
-                    <span className="line"></span>
-                  </div> */}
-                  {/* modal */}
                   <div className="modal">
                     {/* Heading */}
                     <section className="modal-heading">
                       <div className="modal-heading_inner">
                         <h4 className="modal-intro">Generate code</h4>
-                        <div className="download-code">
-                          <p>Download</p>
-                          <DownloadIcon
-                            fontSize="medium"
-                            className="download-icon"
-                          />
+                        <div className="modal-cancel-btn" onClick={handleClose}>
+                          <span className="cancel-line"></span>
+                          <span className="cancel-line"></span>
                         </div>
                       </div>
                     </section>
 
                     {/* Code preview */}
-                    <div className="code-preview"></div>
+                    <div className="modalPreview">
+                      <div className="modalPreview__code">
+                        {/* SyntaxHighlight */}
+                        <p className="previewCode">{sourceCode}</p>
+                      </div>
+                      <div className="modalPreview__display"></div>
+                    </div>
 
                     <section className="modal-info">
                       <span className="divider"></span>
@@ -157,7 +170,7 @@ export default function ElementModal({
                     </section>
                     {/* generate button */}
                     <div className="button_container">
-                      <button className="generate_button">Edit Code</button>
+                      <button className="generate_button">Edit Code </button>
                     </div>
                     {/* End of modal info */}
                   </div>
@@ -167,6 +180,12 @@ export default function ElementModal({
           </section>
         ))}
       </div>
+
+      <SnackbarComponent
+        openSnackbar={openSnackbar}
+        setOpenSnackbar={setOpenSnacbar}
+        snackbarMessage="Coming Soon ✌️"
+      />
     </>
   );
 }
