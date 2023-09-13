@@ -6,11 +6,22 @@
   position: relative;
   z-index: 999;
   padding: 3rem 7rem;
+  max-width: 1440px;
+  margin: 0 auto;
+
+  @include response(tab-port) {
+    padding: 3rem 3rem;
+  }
 
   &__lists {
     @include flex;
     gap: 4rem;
     font-size: 1.7rem;
+
+    @include response(tab-port) {
+      gap: 2rem;
+      font-size: 1.5rem;
+    }
 
     .navigation__list {
       list-style: none;
@@ -19,6 +30,12 @@
 
       &:hover {
         color: $purple;
+      }
+
+      @include response(tab-port) {
+        &:nth-child(2) {
+          display: none;
+        }
       }
     }
   }
@@ -30,6 +47,10 @@
     @include flex(flex-end);
     border-radius: 2rem;
     cursor: pointer;
+
+    @include response(tab-port) {
+      display: none;
+    }
 
     .theme_icon {
       color: $ash-black;

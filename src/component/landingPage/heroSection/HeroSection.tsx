@@ -17,7 +17,6 @@ export default function HeroSection() {
         <div>
           <h1>
             <span className={styles["text-purple"]}> Customize and save </span>{" "}
-            <br />
             components with no setup
           </h1>
           <p className={styles["hero-section__text"]}>

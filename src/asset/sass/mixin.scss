@@ -4,3 +4,65 @@
   flex-direction: $flex-direction;
   align-items: center;
 }
+// RESPONSIVE DESIGN MIXIN
+@mixin response($breakpoint) {
+  @if $breakpoint == smallest-phone {
+    @media only screen and (max-width: 20em) {
+      //320px
+      @content;
+    }
+  }
+  @if $breakpoint == small-phone {
+    @media only screen and (max-width: 37.5em) {
+      //600px
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 56.25em) {
+      //900px
+      @content;
+    }
+  }
+
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {
+      //1200px
+      @content;
+    }
+  }
+
+  @if $breakpoint == desktop {
+    @media only screen and (min-width: 112.5em) {
+      //1800px
+      @content;
+    }
+  }
+
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 150em) {
+      //2400px
+      @content;
+    }
+  }
+
+  @if $breakpoint == inch-15 {
+    @media only screen and (-webkit-min-device-pixel-ratio: 2),
+      only screen and (min--moz-device-pixel-ratio: 2),
+      only screen and (min--moz-device-pixel-ratio: 2/1),
+      only screen and (-o-min-device-pixel-ratio: 2),
+      only screen and (min-resolution: 220dpi),
+      only screen and (min-resolution: 2dppx) {
+      // 15 inch
+      @content;
+    }
+  }
+
+  @if $breakpoint == inch-13 {
+    @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 2) and (min-resolution: 192dpi) {
+      // 13 inch
+      @content;
+    }
+  }
+}
