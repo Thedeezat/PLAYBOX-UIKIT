@@ -1,15 +1,18 @@
 @import "../../../../../asset/sass/global.scss";
 
 .dashboard_content {
-  width: 76vw;
+  width: 100%;
   padding-left: 2rem;
+  padding-bottom: 30px;
   font-size: 1.5rem;
-  height: 88vh;
+  height: 80vh;
   overflow-y: scroll;
+  overflow-x: hidden;
   scroll-behavior: smooth;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   scroll-behavior: smooth;
+  // background-color: rebeccapurple;
 
   &::-webkit-scrollbar {
     display: none;

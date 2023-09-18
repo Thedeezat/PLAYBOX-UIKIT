@@ -1,55 +1,29 @@
 import { useState } from "react";
-
 import styles from "./sidebar.module.scss";
-
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-
 import AssignmentOutlinedIcon from "@mui/icons-material/AssignmentOutlined";
-
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
-
 import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
-
 import ForumOutlinedIcon from "@mui/icons-material/ForumOutlined";
-
 import GridViewIcon from "@mui/icons-material/GridView";
-
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-
 import StarBorderIcon from "@mui/icons-material/StarBorder";
-
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-
 import TabItem from "../component/sidebarTab/tabContexts/TabItem";
-
 import TabWrapper from "../component/sidebarTab/tabContexts/TabWrapper";
-
 import TabContent from "../component/sidebarTab/tabContexts/TabContent";
-
 import HomeContent from "../component/sidebarTab/tabContents/tabPages/myHome/HomeContent";
-
 import Docs from "../component/sidebarTab/tabContents/tabPages/documentation/Docs";
-
 import Files from "../component/sidebarTab/tabContents/tabPages/myFiles/Files";
-
 import DashboardCustomizeIcon from "@mui/icons-material/DashboardCustomize";
-
 import ViewQuiltIcon from "@mui/icons-material/ViewQuilt";
-
 import Custom from "../component/sidebarTab/tabContents/tabPages/customise/Custom";
-
 import Inbox from "../component/sidebarTab/tabContents/tabPages/myInbox/Inbox";
-
 import Dropdown from "../component/sidebarTab/tabContents/tabPages/myComponent/Dropdown";
-
 import LayoutPage from "../component/sidebarTab/tabContents/tabPages/myComponent/layout_compnt/LayoutPage";
-
 import FormsPage from "../component/sidebarTab/tabContents/tabPages/myComponent/forms_compnt/FormsPage";
-
 import FeedbackPage from "../component/sidebarTab/tabContents/tabPages/myComponent/feedback_compnt/FeedbackPage";
-
 import UtilitiesPage from "../component/sidebarTab/tabContents/tabPages/myComponent/utilities_compnt/UtilitiesPage";
-
 import DataDisplay from "../component/sidebarTab/tabContents/tabPages/myComponent/dataDisplay_compnt/DataDisplay";
 
 type Props = {

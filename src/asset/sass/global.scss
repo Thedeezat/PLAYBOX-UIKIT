@@ -15,9 +15,8 @@ html {
 body {
   background: $light-black;
   height: 100vh;
-  // max-width: 1440px;
+  max-width: 1440px;
   margin: 0 auto;
-  width: 100%;
   color: $white;
   scroll-behavior: smooth;
   overflow: hidden;
@@ -93,7 +92,6 @@ a {
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
   margin-top: 3rem;
-  width: 97%;
 
   .layout_component {
     width: 20rem;

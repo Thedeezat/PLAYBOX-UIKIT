@@ -74,14 +74,14 @@ export default function HomeContent() {
         {/* Most used */}
         <h3 className={styles.components_heading}>Most used components</h3>
 
-        <div className={` ${styles.layout_wrapper_home}`}>
+        <div className={` ${styles.layout_component_wrapper}`}>
           <ElementContext imageTextArray={textLists} />
         </div>
 
         {/* Customised components */}
         <h3 className={styles.customised_example}>Customised Components</h3>
         <div
-          className={`layout_component_wrapper ${styles.layout_component_wrapper} ${styles.layout_wrapper_home}`}
+          className={`layout_component_wrapper ${styles.layout_component_wrapper}`}
         >
           <ElementContext imageTextArray={customLists} />
         </div>

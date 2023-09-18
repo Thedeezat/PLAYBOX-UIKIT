@@ -1,6 +1,8 @@
 @import "../../../../../../../asset/sass/global.scss";
 
 .HomeContent {
+  width: 100%;
+
   //***************** Heading *********//
   .HomeContent_heading {
     @include flex(center, column);
@@ -66,9 +68,7 @@
     .layout_component_wrapper {
       margin-top: 0.2rem !important;
     }
-    .layout_wrapper_home {
-      // margin-top: 1rem;
-    }
+
     .customised_example {
       margin-top: 5rem;
     }

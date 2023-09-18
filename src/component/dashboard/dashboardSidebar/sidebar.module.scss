@@ -2,18 +2,22 @@
 
 .sidebar {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  width: 100vw;
+  width: 100%;
 }
 .dashboard_sidebar {
-  width: 24vw;
+  width: 100%;
   margin-left: 4rem;
-  scroll-behavior: smooth;
-  overflow: scroll;
   overflow-y: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
   height: 85vh;
   position: relative;
+
+  @include response(tab-port) {
+    display: none;
+  }
 
   .dashboard_sidebar__wrapper {
     @include flex(flex-start, column);
