@@ -4,15 +4,27 @@
   padding: 3rem 4rem;
   @include flex();
 
+  @include response(tab-port) {
+    padding: 3rem 3rem;
+  }
+
   .dashboard__contents {
     font-size: 1.5rem;
     width: 78%;
     @include flex();
 
+    @include response(tab-land) {
+      justify-content: flex-end;
+    }
+
     // Pages
     .page_section {
       @include flex(center);
+      margin-left: 0.5rem;
       gap: 2rem;
+      @include response(tab-land) {
+        display: none;
+      }
 
       .create_folder {
         padding: 1rem 1rem;
@@ -37,6 +49,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+        @include response(tab-port) {
+          display: none;
+        }
 
         .searchbar {
           border: 1px solid $light-ash;

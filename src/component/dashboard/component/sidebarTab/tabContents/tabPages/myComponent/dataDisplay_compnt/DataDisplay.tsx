@@ -1,5 +1,4 @@
 import image from "../../../../image/img.png";
-
 import ElementModal from "../ElementModal";
 
 interface ImageTextObject {

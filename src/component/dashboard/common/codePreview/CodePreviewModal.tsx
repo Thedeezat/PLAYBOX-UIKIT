@@ -169,35 +169,37 @@ export default function CodePreviewModal({ codeValue, setModal }: modalProps) {
               {codeArray.length > 0 && createNewFolder ? (
                 <>
                   <div className="component-collection-container">
-                    {codeArray.map((component, index) => (
-                      <div
-                        key={index}
-                        onClick={() =>
-                          handlePickFolder(index, component.collectionName)
-                        }
-                        className={`component-collection ${
-                          activeIndex === index && "active-folder"
-                        }`}
-                      >
-                        <FolderIcon
-                          sx={{
-                            width: "40px",
-                            height: "40px",
-                          }}
-                          className="folderBox "
-                        />
-                        <div className="foler-ticked">
-                          <DoneIcon
+                    <div className="component-collection__folders">
+                      {codeArray.map((component, index) => (
+                        <div
+                          key={index}
+                          onClick={() =>
+                            handlePickFolder(index, component.collectionName)
+                          }
+                          className={`component-collection ${
+                            activeIndex === index && "active-folder"
+                          }`}
+                        >
+                          <FolderIcon
                             sx={{
-                              width: "20px",
-                              height: "20px",
+                              width: "40px",
+                              height: "40px",
                             }}
-                            className="folder-ticked__icon"
+                            className="folderBox "
                           />
+                          <div className="foler-ticked">
+                            <DoneIcon
+                              sx={{
+                                width: "20px",
+                                height: "20px",
+                              }}
+                              className="folder-ticked__icon"
+                            />
+                          </div>
+                          <p>{component.collectionName}</p>
                         </div>
-                        <p>{component.collectionName}</p>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                     <div className="divider"></div>
                     {/* New collection */}
                     <div className="component-collection-container__bottomText ">

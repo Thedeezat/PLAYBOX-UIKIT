@@ -4,17 +4,41 @@
 .inbox {
   @include flex(center, column);
   height: 60vh;
-  padding-right: 15rem;
+  width: 1000px;
+  max-width: 100%;
+
+  @include response(tab-land) {
+    width: 840px;
+  }
+  @include response(tablet) {
+    width: 650px;
+  }
+  @include response(tab-port) {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
 
   &__heading {
     font-size: 2.5rem;
     width: 100%;
     text-align: center;
+
+    @include response(small-phone) {
+      font-size: 2rem;
+    }
   }
   &__info {
     opacity: 0.7;
     font-size: 1.4rem;
     margin-top: 2rem;
+
+    @include response(small-phone) {
+      font-size: 1.2rem;
+    }
   }
   .inbox_box {
     width: 14rem;

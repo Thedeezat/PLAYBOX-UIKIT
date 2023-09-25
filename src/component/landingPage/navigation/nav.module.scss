@@ -6,7 +6,6 @@
   position: relative;
   z-index: 999;
   padding: 3rem 7rem;
-  max-width: 1440px;
   margin: 0 auto;
 
   @include response(tab-port) {

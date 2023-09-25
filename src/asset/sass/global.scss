@@ -15,6 +15,7 @@ html {
 body {
   background: $light-black;
   height: 100vh;
+  width: 100%;
   max-width: 1440px;
   margin: 0 auto;
   color: $white;
@@ -37,7 +38,6 @@ a {
   position: relative;
   background-size: cover;
   background-position: center;
-  position: absolute;
   width: 100%;
   height: 100vh;
 }
@@ -78,13 +78,27 @@ a {
 .layoutPages {
   margin-top: 3rem;
 
+  @include response(small-phone) {
+    margin-top: 1rem;
+    width: 85%;
+  }
+
   &_heading {
     margin-bottom: 3rem;
+
+    @include response(small-phone) {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+    }
   }
   &_info {
     font-size: 1.6rem;
     line-height: 180%;
     max-width: 60rem;
+
+    @include response(small-phone) {
+      font-size: 1.4rem;
+    }
   }
 }
 .layout_component_wrapper {
@@ -92,6 +106,25 @@ a {
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
   margin-top: 3rem;
+  // background-color: pink;
+
+  @include response(tab-land) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  @include response(tablet) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include response(tab-port) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include response(small-phone) {
+    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 22.5em) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 
   .layout_component {
     width: 20rem;
@@ -104,8 +137,20 @@ a {
     justify-content: center;
     align-items: flex-end;
     border: 1px solid $gray;
-
     cursor: pointer;
+
+    @include response(tab-land) {
+      width: 18rem;
+      height: 16rem;
+    }
+    @include response(tab-port) {
+      width: 16rem;
+      height: 14rem;
+    }
+    @include response(small-phone) {
+      width: 14.5rem;
+      height: 14rem;
+    }
 
     &:hover {
       transform: scale(1.01);
@@ -123,6 +168,19 @@ a {
         object-fit: fit;
         width: 17rem;
         height: 9.8rem;
+
+        @include response(tab-land) {
+          width: 15rem;
+          height: 8rem;
+        }
+        @include response(tab-port) {
+          width: 14rem;
+          height: 6rem;
+        }
+        @include response(small-phone) {
+          width: 12rem;
+          height: 6rem;
+        }
       }
     }
     &__text {
@@ -134,6 +192,15 @@ a {
       padding-left: 5rem;
       color: $white;
       margin-top: 1.5rem;
+
+      @include response(tab-port) {
+        font-size: 1.3rem;
+        padding-left: 3rem;
+      }
+      @include response(small-phone) {
+        font-size: 1.1rem;
+        padding-left: 4rem;
+      }
     }
   }
 }
@@ -557,6 +624,7 @@ a {
         width: 35px;
         height: 30px;
         border-radius: 0.3rem;
+        display: block;
         background-color: rgba($gray, 0.9);
       }
       p {
@@ -637,12 +705,21 @@ a {
     gap: 10px;
     width: 40rem;
 
+    .component-collection__folders {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-direction: column;
+      max-height: 120px;
+      overflow-y: scroll;
+    }
+
     .component-collection {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 15px;
-      margin-left: 1.5rem;
+      margin-left: 1.2rem;
       cursor: pointer;
       transition: color 0.2s ease;
 

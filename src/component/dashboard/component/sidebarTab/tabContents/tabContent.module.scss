@@ -1,8 +1,12 @@
 @import "../../../../../asset/sass/global.scss";
 
 .dashboard_content {
-  width: 100%;
+  flex: 1;
   padding-left: 2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
   padding-bottom: 30px;
   font-size: 1.5rem;
   height: 80vh;
@@ -12,8 +16,19 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   scroll-behavior: smooth;
-  // background-color: rebeccapurple;
+  // background-color: brown;
 
+  @include response(tab-land) {
+    padding-left: 4rem;
+  }
+  @include response(tab-port) {
+    padding-left: 3rem;
+    align-items: center;
+  }
+  @include response(small-phone) {
+    padding-left: 0;
+    margin: 0 auto;
+  }
   &::-webkit-scrollbar {
     display: none;
   }

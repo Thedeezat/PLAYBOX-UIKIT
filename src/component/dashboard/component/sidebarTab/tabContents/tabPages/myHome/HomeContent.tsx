@@ -1,19 +1,11 @@
 import styles from "./homeContent.module.scss";
-
 import AddIcon from "@mui/icons-material/Add";
-
 import accordian from "../../../image/accordian.png";
-
 import menu from "../../../image/menu.png";
-
 import tabs from "../../../image/tabs.png";
-
 import input from "../../../image/input.png";
-
 import popover from "../../../image/popover.png";
-
 import custom from "../../../image/custom.png";
-
 import ElementContext from "../myComponent/ElementModal";
 
 interface ImageTextObject {
@@ -58,7 +50,10 @@ export default function HomeContent() {
             className={`${styles.homeContent_button} ${styles.createFolder_wrapper}`}
           >
             <div className={styles.createFolder}>
-              <AddIcon fontSize="medium" />
+              <AddIcon
+                fontSize="medium"
+                className={styles.createFolder__Icon}
+              />
             </div>
             <span> Create folders </span>
           </button>

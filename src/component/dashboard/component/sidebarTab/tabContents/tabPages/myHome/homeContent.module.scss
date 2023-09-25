@@ -3,6 +3,10 @@
 .HomeContent {
   width: 100%;
 
+  @include response(small-phone) {
+    width: 85%;
+  }
+
   //***************** Heading *********//
   .HomeContent_heading {
     @include flex(center, column);
@@ -14,15 +18,39 @@
     width: 90%;
     height: 27rem;
 
+    @include response(tab-port) {
+      width: 85%;
+      padding: 4rem 3rem;
+      border-radius: 1rem;
+      height: auto;
+    }
+
     h2 {
       font-size: 3rem;
       margin-bottom: 1rem;
+
+      @include response(tab-port) {
+        margin-bottom: 1.5rem;
+        font-size: 2.5rem;
+      }
     }
+    p {
+      @include response(tab-port) {
+        line-height: 150%;
+        font-size: 1.4rem;
+      }
+    }
+
     .homeContent_button_wrapper {
       @include flex();
       gap: 3rem;
       position: relative;
       margin-top: 3.5rem;
+      // background-color: red;
+
+      @include response(tab-port) {
+        display: none;
+      }
 
       .homeContent_button {
         outline: none;
@@ -35,7 +63,6 @@
         font-size: 1.4rem;
         color: $white;
         font-weight: 500;
-        // cursor: pointer;
         @include flex(center);
         transition: all 0.3s ease;
 

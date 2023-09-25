@@ -1,11 +1,21 @@
 @import "../../../../../../../asset/sass/global.scss";
 
 .home_content {
+  width: 100%;
+
+  @include response(tab-port) {
+    width: 85%;
+  }
+
   .get_started {
     padding: 1rem 0;
 
     .getStarted_overview {
       font-size: 2.7rem;
+
+      @include response(tab-land) {
+        font-size: 2.5rem;
+      }
     }
 
     .getStarted_text,
@@ -14,6 +24,12 @@
       opacity: 0.7;
       margin: 2rem 0;
       line-height: 180%;
+      max-width: 95%;
+
+      @include response(tab-port) {
+        font-size: 1.3rem;
+        max-width: 100%;
+      }
     }
 
     .getStarted_heading {
@@ -21,6 +37,10 @@
       margin: 2rem 0;
       margin-top: 4rem;
       font-size: 2rem;
+
+      @include response(tab-port) {
+        font-size: 1.8rem;
+      }
     }
     .getStarted_subheading {
       font-weight: 400;
@@ -32,6 +52,12 @@
       @include flex(flex-start);
       gap: 4rem;
       margin-top: 3rem;
+      flex-wrap: wrap;
+      max-width: 85%;
+
+      @include response(tab-port) {
+        max-width: 100%;
+      }
 
       .framework_types {
         @include flex(center, column);
@@ -43,6 +69,11 @@
         color: $light-black;
         font-size: 1.4rem;
         overflow: hidden;
+
+        @include response(tab-land) {
+          width: 13rem;
+          font-size: 1.2rem;
+        }
 
         .framework_icon {
           width: 4.5rem;
@@ -102,6 +133,7 @@
     }
     .browser_support {
       margin-top: 6rem;
+      max-width: 80%;
     }
     .import_file {
       margin-top: 6rem;

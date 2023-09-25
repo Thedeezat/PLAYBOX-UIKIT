@@ -2,19 +2,24 @@
 
 .sidebar {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
   width: 100%;
 }
 .dashboard_sidebar {
   width: 100%;
+  max-width: 280px;
   margin-left: 4rem;
   overflow-y: scroll;
   overflow-x: hidden;
   scroll-behavior: smooth;
   height: 85vh;
   position: relative;
+  // background-color: rebeccapurple;
 
+  @include response(tab-land) {
+    max-width: 200px;
+  }
   @include response(tab-port) {
     display: none;
   }
