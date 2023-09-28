@@ -30,7 +30,12 @@ interface Props {
 }
 export default function AppContext({ children }: Props) {
   const [fileName, setFileName] = useState("ar7fght89mx0hji");
-  const [codeArray, setCodeArray] = useState<any[]>([]);
+
+  const [codeArray, setCodeArray] = useState<any[]>(() => {
+    const savedItem = localStorage.getItem("codeArray");
+    const parsedItem = savedItem ? JSON.parse(savedItem) : undefined;
+    return parsedItem || [];
+  });
   const [newFileName, setNewFileName] = useState("");
 
   const contextValue = {
@@ -41,6 +46,11 @@ export default function AppContext({ children }: Props) {
     newFileName,
     setNewFileName,
   };
+
+  // Local Storage
+  useEffect(() => {
+    localStorage.setItem("codeArray", JSON.stringify(codeArray));
+  }, [codeArray]);
 
   return (
     <ValueContext.Provider value={contextValue}>
