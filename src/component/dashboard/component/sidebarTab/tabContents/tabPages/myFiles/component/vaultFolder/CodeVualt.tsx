@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../files.module.scss";
 import FolderIcon from "@mui/icons-material/Folder";
 import { useItemContext } from "../../../../../../../common/context/AppContext";
@@ -18,7 +18,7 @@ interface ComponentType {
 }
 
 export default function CodeVualt() {
-  const { codeArray } = useItemContext();
+  const { codeArray, setCodeArray } = useItemContext();
   const [openFolder, setOpenFolder] = useState(false);
   const [openedCodeArray, setOpenedCodeArray] = useState<ComponentType>();
   const [toggleDropdown, setToggleDropdown] = useState(true);
@@ -77,9 +77,33 @@ export default function CodeVualt() {
   // Delete file
   const handleDeleteFile = () => {
     setOpenDeleteSnackbar(true);
+
+    if (openedCodeArray && openedFile) {
+      const updatedFiles = openedCodeArray.files.filter(
+        (file) => file !== openedFile
+      );
+      setOpenedCodeArray({ ...openedCodeArray, files: updatedFiles });
+      setOpenDeleteSnackbar(true);
+
+      console.log(codeArray);
+    }
   };
 
-  // Edit file
+  useEffect(() => {
+    if (openedCodeArray && codeArray) {
+      const updatedCodeArray = codeArray.map((item) => {
+        if (item.collectionName == openedCodeArray.collectionName) {
+          return {
+            ...item,
+            files: openedCodeArray.files,
+          };
+        }
+        return item;
+      });
+
+      setCodeArray(updatedCodeArray);
+    }
+  }, [openedCodeArray, codeArray]);
 
   return (
     <div className={styles.folder_section}>
@@ -189,10 +213,10 @@ export default function CodeVualt() {
                           height: "18px",
                         }}
                       />
-                    </Tooltip>
+                    </Tooltip> */}
                     <Tooltip title={tooptipText("Delete")}>
                       <DeleteIcon
-                        className={styles.copyIcon}
+                        className={`${styles.copyIcon} ${styles.deleteIcon}`}
                         onClick={handleDeleteFile}
                         fontSize="large"
                         sx={{
@@ -200,7 +224,7 @@ export default function CodeVualt() {
                           height: "18px",
                         }}
                       />
-                    </Tooltip> */}
+                    </Tooltip>
                   </div>
                 )}
               </div>

@@ -164,7 +164,7 @@
     @include flex();
     align-items: flex-start;
     width: 100%;
-    gap: 3rem;
+    gap: 4rem;
     position: relative;
 
     &__arrowback {
@@ -262,7 +262,10 @@
       }
     }
     //******* Open code folder *******//
+
     .showFolderCode {
+      width: 100%;
+
       .editFile {
         position: relative;
         display: none !important;
@@ -329,15 +332,15 @@
           border: 0.4px solid rgba($ash, 0.3);
 
           .copyIcon {
-            // border-right: 1px solid rgba($ash, 0.2);
+            border-right: 1px solid rgba($ash, 0.2);
             cursor: pointer;
-            padding: 1rem 1.2rem;
+            padding: 1rem 1.4rem;
             transition: all 0.3s ease-in;
             border-radius: 0.5rem;
             border-top-right-radius: 0;
             border-bottom-right-radius: 0;
 
-            &:nth-child(2),
+            &:nth-child(3),
             &:nth-child(3) {
               border-top-left-radius: 0 !important;
               border-bottom-left-radius: 0 !important;
@@ -349,6 +352,9 @@
             &:hover {
               background-color: rgba($ash, 0.05);
             }
+          }
+          .deleteIcon {
+            border-right: 0 !important;
           }
         }
       }
