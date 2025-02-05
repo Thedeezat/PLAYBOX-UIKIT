@@ -5,9 +5,11 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Modaltooltip from "../../../../../common/Modaltooltip";
 
 import SnackbarComponent from "../../../../../common/SnackbarPopup";
+
 interface ImageTextObject {
   image: string;
   text: string;
+  sourceCode: string;
 }
 interface ElementContextProps {
   imageTextArray: ImageTextObject[];
@@ -17,52 +19,25 @@ type frameworkOption = {
   label: string;
   value: string;
 };
-
-type stylOption = {
-  label: string;
-  value: string;
-};
-
 export default function ElementModal({
   imageTextArray,
 }: ElementContextProps): JSX.Element {
   const [modal, setModal] = useState<boolean>(false);
-  const [openSnackbar, setOpenSnacbar] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
 
   const [activeComponent, setActiveComponent] =
     useState<ImageTextObject | null>(null);
 
   const reactOptions: frameworkOption[] = [
-    { label: "Plain HTML", value: "Plain HTMl" },
-    { label: "Create React app", value: "Create React app" },
+    { label: "JavaScript", value: "JavaScript" },
     { label: "TypeScript", value: "Typescript" },
+    { label: "HTML", value: "HTMl" },
   ];
-
-  const cssOptions: stylOption[] = [
-    { label: "Plain CSS", value: "Plain CSS" },
-    { label: "Tailwind", value: "Tailwind" },
-    { label: "SCSS", value: "SCSS" },
-  ];
-  const sourceCode = (
-    <span>
-      {`
-      function generateRandomNumber(min, max) {${(<br />)}
-        const randomArray = [];${(<br />)}
-        const arrayLength = generateRandomNumber(5, 10);${(<br />)}
-        for (let i = 0; i < arrayLength; i++) {${(<br />)}
-          randomArray.push(generateRandomNumber(1, 100));${(<br />)}
-        }${(<br />)}
-        console.log("Random Array:", randomArray);${(<br />)}
-      }${(<br />)}
-    `}
-    </span>
-  );
 
   // Modal
   const handleClick = (element: ImageTextObject) => {
-    // setModal(true);
-    // setActiveComponent(element);
-    setOpenSnacbar(true);
+    setModal(true);
+    setActiveComponent(element);
   };
   const handleClose = () => {
     setModal(false);
@@ -104,10 +79,11 @@ export default function ElementModal({
                     {/* Code preview */}
                     <div className="modalPreview">
                       <div className="modalPreview__code">
-                        {/* SyntaxHighlight */}
-                        <p className="previewCode">{sourceCode}</p>
+                        {/* preview code */}
+                        <pre className="previewCode">
+                          <code>{activeComponent.sourceCode}</code>
+                        </pre>
                       </div>
-                      <div className="modalPreview__display"></div>
                     </div>
 
                     <section className="modal-info">
@@ -118,7 +94,7 @@ export default function ElementModal({
                         <div className="modal-info__heading">
                           <h4 className="modal-info__head"> {element.text} </h4>
                           <p className="modal-info__explanation">
-                            View all written framework listings.
+                            View all framework listings.
                             {/* Generate your component */}
                           </p>
                         </div>
@@ -133,45 +109,46 @@ export default function ElementModal({
                             />
                           </div>
                           <div className="select-framework__options">
-                            {/* React frameworks */}
-                            {reactOptions.map((option) => (
-                              <Modaltooltip
-                                text="Copy source"
-                                key={option.value}
-                              >
-                                {option.label}
-                              </Modaltooltip>
-                            ))}
-                          </div>
-                        </div>
-                        {/* Framework-2 */}
-                        <div className="select-framework">
-                          <div className="select-framework_head">
-                            {" "}
-                            <p> List of stying framework</p>
-                            <ArrowDropDownIcon
-                              fontSize="medium"
-                              className="arrow-icon"
-                            />
-                          </div>
-                          <div className="select-framework__options">
-                            {/* CSS frameworks */}
-                            {cssOptions.map((option) => (
-                              <Modaltooltip
-                                text="Copy source"
-                                key={option.value}
-                              >
-                                {option.label}
-                              </Modaltooltip>
-                            ))}
+                            {reactOptions.map((option) =>
+                              option.label === "JavaScript" ? (
+                                <Modaltooltip
+                                  text="Copy source"
+                                  key={option.value}
+                                >
+                                  <div
+                                    className="option option-active"
+                                    onClick={() =>
+                                      navigator.clipboard.writeText(
+                                        element.sourceCode
+                                      )
+                                    }
+                                  >
+                                    {option.label}
+                                  </div>
+                                </Modaltooltip>
+                              ) : (
+                                <div
+                                  key={option.value}
+                                  className="option"
+                                  onClick={() => setOpenSnackbar(true)}
+                                  style={{
+                                    color: "gray",
+                                    cursor: "pointer",
+                                    opacity: 0.5,
+                                  }}
+                                >
+                                  {option.label}
+                                </div>
+                              )
+                            )}
                           </div>
                         </div>
                       </div>
                     </section>
                     {/* generate button */}
-                    <div className="button_container">
+                    {/* <div className="button_container">
                       <button className="generate_button">Edit Code </button>
-                    </div>
+                    </div> */}
                     {/* End of modal info */}
                   </div>
                 </div>
@@ -183,7 +160,7 @@ export default function ElementModal({
 
       <SnackbarComponent
         openSnackbar={openSnackbar}
-        setOpenSnackbar={setOpenSnacbar}
+        setOpenSnackbar={setOpenSnackbar}
         snackbarMessage="Coming Soon ✌️"
       />
     </>

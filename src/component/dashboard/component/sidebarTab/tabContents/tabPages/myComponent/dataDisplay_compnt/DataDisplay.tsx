@@ -1,20 +1,31 @@
 import image from "../../../../image/img.png";
 import ElementModal from "../ElementModal";
+import {
+  Badge,
+  Lists,
+  Divider,
+  Typography,
+  Tables,
+  DataGrids,
+  DataComparisons,
+  ChartsAndGraphs,
+} from "../../../../../../../../constants/db";
 
 interface ImageTextObject {
   image: string;
   text: string;
+  sourceCode: string;
 }
 
 const textLists: ImageTextObject[] = [
-  { image: image, text: "Badge" },
-  { image: image, text: "Lists" },
-  { image: image, text: "Divider" },
-  { image: image, text: "Typography" },
-  { image: image, text: "Tables" },
-  { image: image, text: "Data Grids" },
-  { image: image, text: "Data Comparisons" },
-  { image: image, text: "Charts and Graphs" },
+  { image: image, text: "Badge", sourceCode: Badge },
+  { image: image, text: "Lists", sourceCode: Lists },
+  { image: image, text: "Divider", sourceCode: Divider },
+  { image: image, text: "Typography", sourceCode: Typography },
+  { image: image, text: "Tables", sourceCode: Tables },
+  { image: image, text: "Data Grids", sourceCode: DataGrids },
+  { image: image, text: "Data Comparisons", sourceCode: DataComparisons },
+  { image: image, text: "Charts and Graphs", sourceCode: ChartsAndGraphs },
 ];
 
 export default function DataDisplay() {

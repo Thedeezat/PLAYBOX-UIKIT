@@ -25,6 +25,7 @@ import FormsPage from "../component/sidebarTab/tabContents/tabPages/myComponent/
 import FeedbackPage from "../component/sidebarTab/tabContents/tabPages/myComponent/feedback_compnt/FeedbackPage";
 import UtilitiesPage from "../component/sidebarTab/tabContents/tabPages/myComponent/utilities_compnt/UtilitiesPage";
 import DataDisplay from "../component/sidebarTab/tabContents/tabPages/myComponent/dataDisplay_compnt/DataDisplay";
+import SnackbarComponent from "../common/SnackbarPopup";
 
 type Props = {
   setPageName: (pageName: string) => void;
@@ -33,9 +34,14 @@ type Props = {
 export default function DashboardSidebar({ setPageName }: Props) {
   const [selectedTab, setSelectedTab] = useState<string>("tab1");
   const [showdropdown, setShowDropdown] = useState<boolean>(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [buyCoffee, setBuyCofee] = useState(false);
 
   const toggleDropDown = () => {
     setShowDropdown(!showdropdown);
+  };
+  const handleClick = () => {
+    setOpenSnackbar(true);
   };
 
   return (
@@ -148,15 +154,24 @@ export default function DashboardSidebar({ setPageName }: Props) {
               setSelectedTab={setSelectedTab}
             />
             {/* Template */}
-            <div className={styles.sidebar_components_container}>
+            <div
+              className={styles.sidebar_components_container}
+              onClick={() => handleClick()}
+            >
               <div className={styles.sidebarComponent_icon_wrapper}>
                 <ViewQuiltIcon
                   fontSize="medium"
                   className={styles.sidebarComponent_icon}
                 />
               </div>
-              <span> Template </span>
+              <span> Templates </span>
             </div>
+
+            <SnackbarComponent
+              openSnackbar={openSnackbar}
+              setOpenSnackbar={setOpenSnackbar}
+              snackbarMessage="Coming in V2.0 ✌️"
+            />
 
             {/* Community */}
             <div className={styles.sidebar_components_container}>
@@ -172,8 +187,13 @@ export default function DashboardSidebar({ setPageName }: Props) {
 
           {/* donate */}
           <div className={styles.sidebar_donate}>
-            <p> Want to buy me a coffee 🌚 </p>
-            <button> Go ahead </button>
+            <p> Want to collaborate on projects 🌚 </p>
+            <a
+              href="mailto:hadizavidime@gmail.com"
+              className={styles.sidebar_donate__btn}
+            >
+              <button>Go ahead</button>
+            </a>
           </div>
 
           {/* user */}
@@ -201,7 +221,12 @@ export default function DashboardSidebar({ setPageName }: Props) {
       <div>
         {/* Home tab */}
         <TabContent index="tab1" selectedTab={selectedTab}>
-          <HomeContent />
+          <HomeContent
+            selectedTab={selectedTab}
+            setSelectedTab={setSelectedTab}
+            setPageName={setPageName}
+            setShowDropdown={setShowDropdown}
+          />
         </TabContent>
         {/* Docs tab */}
         <TabContent selectedTab={selectedTab} index="tab2">

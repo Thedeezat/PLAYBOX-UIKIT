@@ -1,23 +1,35 @@
 import hero from "../../../../image/hero.png";
-
 import ElementContext from "../ElementModal";
+import {
+  Input,
+  Button,
+  Checkbox,
+  RadioButton,
+  Rating,
+  Select,
+  Slider,
+  Switch,
+  DropDown,
+  ToggleButton,
+} from "../../../../../../../../constants/db";
 
 interface ImageTextObject {
   image: string;
   text: string;
+  sourceCode: string;
 }
 
 const textLists: ImageTextObject[] = [
-  { image: hero, text: "Input" },
-  { image: hero, text: "Button" },
-  { image: hero, text: "Checkbox" },
-  { image: hero, text: "Radio button" },
-  { image: hero, text: "Rating" },
-  { image: hero, text: "Select" },
-  { image: hero, text: "Slider" },
-  { image: hero, text: "Switch" },
-  { image: hero, text: "Drop down" },
-  { image: hero, text: "Toogle button" },
+  { image: hero, text: "Input", sourceCode: Input },
+  { image: hero, text: "Button", sourceCode: Button },
+  { image: hero, text: "Checkbox", sourceCode: Checkbox },
+  { image: hero, text: "Radio button", sourceCode: RadioButton },
+  { image: hero, text: "Rating", sourceCode: Rating },
+  { image: hero, text: "Select", sourceCode: Select },
+  { image: hero, text: "Slider", sourceCode: Slider },
+  { image: hero, text: "Switch", sourceCode: Switch },
+  { image: hero, text: "Drop down", sourceCode: DropDown },
+  { image: hero, text: "Toogle button", sourceCode: ToggleButton },
 ];
 
 export default function FormsPage() {
